@@ -439,6 +439,9 @@
         return;
       }
       const when = new Date();
+      const brands = navigator.userAgentData
+        ? navigator.userAgentData.brands.map((brand) => `${brand.brand} ${brand.version}`).join(", ")
+        : "";
       fetch(FORM_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -450,8 +453,19 @@
           page: location.href,
           referrer: document.referrer || "direct",
           language: navigator.language || "",
+          languages: navigator.languages ? navigator.languages.join(", ") : "",
           timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "",
+          platform: navigator.platform || "",
+          vendor: navigator.vendor || "",
+          browser: brands,
+          user_agent: navigator.userAgent || "",
           screen: `${window.screen.width}x${window.screen.height}`,
+          viewport: `${window.innerWidth}x${window.innerHeight}`,
+          color_depth: String(window.screen.colorDepth || ""),
+          touch_points: String(navigator.maxTouchPoints || 0),
+          cpu_cores: String(navigator.hardwareConcurrency || ""),
+          device_memory_gb: String(navigator.deviceMemory || ""),
+          cookies_enabled: String(navigator.cookieEnabled),
           anonymous_id: visitorId(),
         }),
       }).catch(() => {
