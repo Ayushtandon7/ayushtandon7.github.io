@@ -24,6 +24,12 @@ git push -u origin main
 
 Anyone can open that link on any computer or phone. No login is required.
 
+## Contact form and phone requests
+
+Both forms post to [FormSubmit](https://formsubmit.co) (`FORM_ENDPOINT` in `main.js`), which emails each submission to `Ayushtandon717@gmail.com`. The sender's address is set as reply-to, so replying in Gmail goes straight to them.
+
+FormSubmit sends a one-time **Activate Form** email to that Gmail address before the first message gets through. Until it is activated, the forms show an error and ask visitors to email directly.
+
 ## Preview locally
 
 Open `index.html` in a browser, or run:

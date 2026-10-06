@@ -8,304 +8,588 @@
       name="description"
       content="Salesforce and CTI engineer in Germany. Sales Cloud, Service Cloud, Talkdesk, Genesys, Amazon Connect. 6+ years building automation and contact-center integrations."
     />
-    <meta name="theme-color" content="#f7f4ee" />
+    <meta property="og:title" content="Ayush Tandon — Salesforce & CTI Engineer" />
+    <meta
+      property="og:description"
+      content="Salesforce automation, Talkdesk routing, and the integrations between CRM and the contact center."
+    />
+    <meta property="og:url" content="https://tandon7.github.io/" />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://tandon7.github.io/" />
+    <meta name="theme-color" content="#070a12" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Sora:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+    <script src="main.js" defer></script>
   </head>
   <body>
-    <a class="skip" href="#work">Skip to work</a>
-    <div class="frame">
-      <header class="top">
-        <p class="mark">AT</p>
-        <nav>
+    <div class="progress" aria-hidden="true"></div>
+
+    <header class="nav" id="nav">
+      <div class="nav-inner">
+        <a class="brand" href="#top" aria-label="Ayush Tandon, back to top">
+          <span class="brand-mark">AT</span>
+          <span class="brand-name">Ayush Tandon</span>
+        </a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-links"
+          aria-label="Toggle menu"
+        >
+          <span></span><span></span>
+        </button>
+        <nav id="nav-links" class="nav-links">
           <a href="#work">Work</a>
           <a href="#experience">Experience</a>
           <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
+          <a href="#credentials">Credentials</a>
+          <a class="nav-cta" href="#contact">Contact</a>
         </nav>
-      </header>
+      </div>
+    </header>
 
+    <main id="top">
       <section class="hero">
-        <p class="kicker">Königsbrunn / Berlin · Germany</p>
-        <h1>Ayush Tandon</h1>
-        <p class="lede">
-          Salesforce and CTI engineer. I design the systems that sit between CRM
-          and the contact center — routing, automation, identity, and the
-          operational tools teams actually use.
-        </p>
-        <ul class="facts">
-          <li>6+ years</li>
-          <li>Salesforce · Talkdesk · Genesys · Amazon Connect</li>
-          <li>Work permit: Germany</li>
-        </ul>
-        <div class="hero-actions">
-          <a class="btn primary" href="mailto:Ayushtandon717@gmail.com">Email</a>
-          <a
-            class="btn"
-            href="https://www.linkedin.com/in/ayush-tandon-%E2%98%81%EF%B8%8F-2640991a8"
-            target="_blank"
-            rel="noopener noreferrer"
-            >LinkedIn</a
-          >
-          <a
-            class="btn"
-            href="https://www.salesforce.com/trailblazer/atandon50"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Trailblazer</a
-          >
+        <canvas id="network" class="hero-canvas" aria-hidden="true"></canvas>
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="hero-grid-bg" aria-hidden="true"></div>
+
+        <div class="wrap hero-layout">
+          <div class="hero-copy">
+            <p class="eyebrow reveal">
+              <span class="pulse-dot"></span>Salesforce &amp; CTI Engineer · Germany
+            </p>
+            <h1 class="reveal">Ayush <span class="grad-text">Tandon</span></h1>
+            <p class="hero-role reveal">
+              I build
+              <span
+                class="rotator"
+                data-words='["Salesforce automation","contact-center routing","CRM and CTI integrations","secure SSO for teams"]'
+                >Salesforce automation</span
+              >
+            </p>
+            <p class="lede reveal">
+              Six years designing the systems between CRM and the contact center: Flows and
+              Apex on Salesforce, routing and IVR on Talkdesk, and the identity and automation
+              layers that keep them in sync.
+            </p>
+            <div class="actions reveal">
+              <a class="btn btn-primary" href="#contact">
+                Send a message
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+              <a
+                class="btn btn-ghost"
+                href="https://www.linkedin.com/in/ayush-tandon-%E2%98%81%EF%B8%8F-2640991a8"
+                target="_blank"
+                rel="noopener noreferrer"
+                >LinkedIn</a
+              >
+              <a
+                class="btn btn-ghost"
+                href="https://www.salesforce.com/trailblazer/atandon50"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Trailblazer</a
+              >
+            </div>
+          </div>
+
+          <aside class="console reveal" aria-label="Illustration of a call routed from Talkdesk to Salesforce">
+            <div class="console-head">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="mono">talkdesk → salesforce</span>
+              <span class="live"><span class="pulse-dot"></span>live</span>
+            </div>
+            <ol class="flow" id="flow">
+              <li>
+                <span class="step-no">01</span>
+                <div><strong>Inbound call</strong><span>Number matched to its flow</span></div>
+                <span class="tick" aria-hidden="true"></span>
+              </li>
+              <li>
+                <span class="step-no">02</span>
+                <div><strong>IVR menu</strong><span>Language and intent captured</span></div>
+                <span class="tick" aria-hidden="true"></span>
+              </li>
+              <li>
+                <span class="step-no">03</span>
+                <div><strong>Data dip</strong><span>Customer found in Salesforce</span></div>
+                <span class="tick" aria-hidden="true"></span>
+              </li>
+              <li>
+                <span class="step-no">04</span>
+                <div><strong>Ring group</strong><span>Routed to the right team</span></div>
+                <span class="tick" aria-hidden="true"></span>
+              </li>
+              <li>
+                <span class="step-no">05</span>
+                <div><strong>Wrap-up</strong><span>Case logged with AI summary</span></div>
+                <span class="tick" aria-hidden="true"></span>
+              </li>
+            </ol>
+            <div class="console-foot">
+              <span class="mono">call journey</span>
+              <span class="console-bar"><i></i></span>
+            </div>
+          </aside>
+        </div>
+
+        <div class="wrap stats">
+          <div class="stat reveal">
+            <span class="num" data-count="6" data-suffix="+">6+</span>
+            <span class="label">Years in Salesforce &amp; CTI</span>
+          </div>
+          <div class="stat reveal">
+            <span class="num" data-count="1000" data-suffix="+">1,000+</span>
+            <span class="label">Talkdesk users onboarded</span>
+          </div>
+          <div class="stat reveal">
+            <span class="num" data-count="80" data-suffix="+">80+</span>
+            <span class="label">Phone numbers consolidated</span>
+          </div>
+          <div class="stat reveal">
+            <span class="num" data-count="6">6</span>
+            <span class="label">Salesforce credentials</span>
+          </div>
         </div>
       </section>
 
-      <section id="work" class="block">
-        <h2>Selected work</h2>
-        <div class="cards">
-          <article class="card">
-            <p class="meta">Enpal · 2025 — current</p>
-            <h3>Contact-center architecture on Talkdesk</h3>
-            <p>
-              Redesigned call routing across 80+ numbers and multiple ring
-              groups into one maintainable architecture. Built IVR, data dips,
-              and business-system integrations. Onboarded 1,000+ users across
-              Talkdesk, including AI transcription, mobile CTI, and Airtable
-              connections.
-            </p>
-          </article>
-          <article class="card">
-            <p class="meta">Enpal · identity &amp; automation</p>
-            <h3>SAML SSO and Make.com backbone</h3>
-            <p>
-              Implemented SAML SSO with Microsoft Azure AD and a centralized
-              Make.com integration layer. Designed Talkdesk–Azure Speech-to-Text
-              architecture and helped migrate custom data tables to standard
-              models across Salesforce and Talkdesk.
-            </p>
-          </article>
-          <article class="card">
-            <p class="meta">Accenture · packaged tools</p>
-            <h3>Audit, picklist, and user-clone packages</h3>
-            <p>
-              Shipped installed Salesforce packages that cut IT wait time:
-              Dynamic Picklist for business-owned values, an Audit Automation
-              Tool with 6+ month retention and tagged reporting, and a User
-              Clone Tool for profiles, permission sets, groups, and queues.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section id="experience" class="block">
-        <h2>Experience</h2>
-        <ol class="timeline">
-          <li>
-            <div class="when">
-              <span>Apr 2025 — current</span>
-              <span>Berlin, Germany</span>
-            </div>
-            <div class="what">
-              <h3>Salesforce and CTI Engineer</h3>
-              <p class="org">Enpal</p>
-              <ul>
-                <li>
-                  Build and deploy Salesforce solutions across Sales, Service,
-                  and Experience Cloud.
-                </li>
-                <li>
-                  Design Flows and Apex triggers that remove manual work from
-                  operations.
-                </li>
-                <li>
-                  Own Talkdesk as developer and administrator: IVR, routing,
-                  ring groups, user management, and Salesforce CTI.
-                </li>
-                <li>
-                  Support Salesforce and CTI interviews, release management, and
-                  stakeholder documentation.
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li>
-            <div class="when">
-              <span>Jul 2021 — Mar 2025</span>
-              <span>Bangalore, India</span>
-            </div>
-            <div class="what">
-              <h3>Senior Salesforce Analyst</h3>
-              <p class="org">Accenture</p>
-              <ul>
-                <li>
-                  Turned product-owner requirements into user stories and
-                  acceptance criteria in Jira and ServiceNow.
-                </li>
-                <li>
-                  Configured objects, validation rules, Flows, permission sets,
-                  and profiles across Sales, Service, and Experience Cloud.
-                </li>
-                <li>
-                  Built Automation Anywhere 360 scripts for Salesforce, Outlook,
-                  and ServiceNow.
-                </li>
-                <li>
-                  Delivered Dynamic Picklist, Audit Automation Tool, and User
-                  Mirror / Clone packages used by multiple project orgs.
-                </li>
-              </ul>
-            </div>
-          </li>
-        </ol>
-      </section>
-
-      <section id="projects" class="block">
-        <h2>Projects</h2>
-        <div class="project-list">
-          <article>
-            <h3>Audit Automation Tool</h3>
-            <p>
-              Automated Salesforce audit-log review: less manual checking, more
-              than six months of stored trail, custom reports for unexpected
-              user activation and service-account changes, and tagging of CR,
-              task, and incident numbers.
-            </p>
-            <a
-              href="https://docs.google.com/presentation/d/1R2_GhzffWuRhgK9oguy_OG8Ep9uWIhbY/edit?usp=drivesdk&amp;ouid=103841655199648855846&amp;rtpof=true&amp;sd=true"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open walkthrough</a
-            >
-          </article>
-          <article>
-            <h3>Dynamic Picklist</h3>
-            <p>
-              Lets business users add picklist values themselves. No monthly
-              release, no change request, no IT bottleneck for a value that
-              should have been live the same day.
-            </p>
-            <a
-              href="https://drive.google.com/file/d/1R0RZ_pJZEzkjgpCcjE4Mqijm9CLy1rFF/view"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open overview</a
-            >
-          </article>
-          <article>
-            <h3>User Clone Tool</h3>
-            <p>
-              Clones permission sets, public groups, and queues so a new user
-              can be set up in a few clicks, with a path back to IT when
-              something does not match.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="block split">
-        <div>
-          <h2>Certifications</h2>
-          <ul class="certs">
-            <li>
-              <span>2021</span> Salesforce Certified Administrator
-            </li>
-            <li>
-              <span>2022</span> Salesforce Certified Platform Developer I
-            </li>
-            <li>
-              <span>2023</span> Salesforce Certified Sales Cloud Consultant
-            </li>
+      <div class="marquee" aria-label="Technology stack">
+        <div class="marquee-track">
+          <ul>
+            <li>Salesforce</li><li>Apex</li><li>Flows</li><li>Agentforce</li><li>Sales Cloud</li>
+            <li>Service Cloud</li><li>Experience Cloud</li><li>Data Cloud</li><li>Talkdesk</li>
+            <li>Genesys</li><li>Amazon Connect</li><li>Open CTI</li><li>Azure AD SSO</li>
+            <li>Make.com</li><li>REST &amp; SOAP</li><li>Gearset</li>
+          </ul>
+          <ul aria-hidden="true">
+            <li>Salesforce</li><li>Apex</li><li>Flows</li><li>Agentforce</li><li>Sales Cloud</li>
+            <li>Service Cloud</li><li>Experience Cloud</li><li>Data Cloud</li><li>Talkdesk</li>
+            <li>Genesys</li><li>Amazon Connect</li><li>Open CTI</li><li>Azure AD SSO</li>
+            <li>Make.com</li><li>REST &amp; SOAP</li><li>Gearset</li>
           </ul>
         </div>
-        <div>
-          <h2>Education</h2>
-          <p class="edu">
-            <strong>B.Tech, Engineering</strong><br />
-            KIIT · Bhubaneswar, India<br />
-            2017 — 2021
-          </p>
+      </div>
+
+      <section id="work" class="section">
+        <div class="wrap">
+          <header class="section-head reveal">
+            <p class="section-tag">01 — Selected work</p>
+            <h2>Systems that run every day</h2>
+          </header>
+          <div class="cards">
+            <article class="card spot reveal">
+              <div class="card-ico">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="5" cy="6" r="2" /><circle cx="5" cy="18" r="2" /><circle cx="19" cy="12" r="2" />
+                  <path d="M7 6h3a3 3 0 0 1 3 3v0a3 3 0 0 0 3 3h1M7 18h3a3 3 0 0 0 3-3v0a3 3 0 0 1 3-3" />
+                </svg>
+              </div>
+              <p class="meta">Enpal · Talkdesk</p>
+              <h3>Contact-center architecture</h3>
+              <p>
+                Redesigned routing across 80+ numbers and multiple ring groups into one maintainable
+                architecture, with IVR, data dips, and business-system integrations. Onboarded 1,000+
+                users with AI transcription, mobile CTI, and Airtable connections.
+              </p>
+              <ul class="tags"><li>Talkdesk</li><li>IVR</li><li>Routing</li></ul>
+            </article>
+            <article class="card spot reveal">
+              <div class="card-ico">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 3l7 3v6c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z" /><path d="M9 12l2 2 4-4" />
+                </svg>
+              </div>
+              <p class="meta">Enpal · Identity &amp; automation</p>
+              <h3>SSO and integration backbone</h3>
+              <p>
+                SAML SSO with Microsoft Azure AD and a centralized Make.com integration layer. Designed
+                the Talkdesk–Azure Speech-to-Text architecture and helped move custom data tables to
+                standard models across Salesforce and Talkdesk.
+              </p>
+              <ul class="tags"><li>Azure AD</li><li>SAML</li><li>Make.com</li></ul>
+            </article>
+            <article class="card spot reveal">
+              <div class="card-ico">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z" /><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5" />
+                </svg>
+              </div>
+              <p class="meta">Accenture · Packaged tools</p>
+              <h3>Salesforce packages</h3>
+              <p>
+                Installed packages that cut IT wait time: Dynamic Picklist for business-owned values, an
+                Audit Automation Tool with long-term retention and tagged reporting, and a User Clone
+                Tool for fast, consistent user setup.
+              </p>
+              <ul class="tags"><li>Apex</li><li>LWC</li><li>Packaging</li></ul>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section class="block">
-        <h2>Skills</h2>
-        <dl class="skills">
-          <div>
-            <dt>Salesforce</dt>
-            <dd>
-              Apex, Flows, Sales Cloud, Service Cloud, Experience Cloud, Data
-              Cloud, Open CTI, Dataloader, Workbench, Gearset
-            </dd>
-          </div>
-          <div>
-            <dt>Contact center</dt>
-            <dd>Talkdesk, Genesys, Amazon Connect, IVR, ring groups, routing</dd>
-          </div>
-          <div>
-            <dt>Identity &amp; integration</dt>
-            <dd>Azure SSO / SAML, Make.com, REST, SOAP, Postman</dd>
-          </div>
-          <div>
-            <dt>Build</dt>
-            <dd>
-              JavaScript, HTML, CSS, Java, SQL, Git, Automation Anywhere 360
-            </dd>
-          </div>
-        </dl>
+      <section id="experience" class="section">
+        <div class="wrap">
+          <header class="section-head reveal">
+            <p class="section-tag">02 — Experience</p>
+            <h2>Where I’ve built</h2>
+          </header>
+          <ol class="timeline reveal">
+            <li class="role reveal">
+              <div class="role-when">
+                <span class="badge-now">Current</span>
+                <span>Apr 2025 — Present</span>
+                <span>Berlin, Germany</span>
+              </div>
+              <div class="role-body spot">
+                <h3>Salesforce and CTI Engineer</h3>
+                <p class="org">Enpal</p>
+                <ul>
+                  <li>Build and deploy Salesforce solutions across Sales, Service, and Experience Cloud, with Flows and Apex triggers that remove manual work.</li>
+                  <li>Designed end-to-end Talkdesk CTI: IVR, call flows, routing, ring groups, data dips, and business-system integrations.</li>
+                  <li>Consolidated 80+ phone numbers and multiple ring groups into one scalable routing architecture.</li>
+                  <li>Rolled out AI transcription and summaries, mobile CTI, and Airtable integrations while onboarding 1,000+ users.</li>
+                  <li>Implemented SAML SSO with Microsoft Azure AD and a centralized Make.com integration architecture.</li>
+                  <li>Support Salesforce and CTI technical interviews, release management, and documentation.</li>
+                </ul>
+              </div>
+            </li>
+            <li class="role reveal">
+              <div class="role-when">
+                <span>Jul 2021 — Mar 2025</span>
+                <span>Bangalore, India</span>
+              </div>
+              <div class="role-body spot">
+                <h3>Senior Salesforce Analyst</h3>
+                <p class="org">Accenture</p>
+                <ul>
+                  <li>Turned product-owner needs into user stories and acceptance criteria in Jira and ServiceNow.</li>
+                  <li>Configured objects, validation rules, Flows, permission sets, and profiles across Sales, Service, and Experience Cloud.</li>
+                  <li>Built Automation Anywhere 360 bots for Salesforce, Outlook, and ServiceNow.</li>
+                  <li>Shipped Dynamic Picklist, Audit Automation Tool, and User Clone Tool packages used across multiple orgs.</li>
+                </ul>
+              </div>
+            </li>
+          </ol>
+        </div>
       </section>
 
-      <footer id="contact">
-        <p class="kicker">Available in Germany</p>
-        <h2>Let’s talk.</h2>
-        <p class="lede short">
-          Salesforce, Talkdesk, or a contact-center build that needs to sit
-          cleanly on CRM. Write directly.
-        </p>
-        <ul class="contact-list">
-          <li>
-            <span>Email</span>
-            <a href="mailto:Ayushtandon717@gmail.com">Ayushtandon717@gmail.com</a>
-          </li>
-          <li>
-            <span>Phone</span>
-            <a href="tel:+4917669524643">+49 176 69524643</a>
-          </li>
-          <li>
-            <span>WhatsApp</span>
+      <section id="projects" class="section">
+        <div class="wrap">
+          <header class="section-head reveal">
+            <p class="section-tag">03 — Projects</p>
+            <h2>Tools that removed the wait</h2>
+          </header>
+          <div class="projects">
+            <article class="project spot reveal">
+              <div class="project-top">
+                <div class="card-ico">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4" /><path d="M14 3l5 5h-5z" />
+                    <circle cx="16.5" cy="16.5" r="3" /><path d="M18.7 18.7L21 21" />
+                  </svg>
+                </div>
+                <span class="project-no">A</span>
+              </div>
+              <h3>Audit Automation Tool</h3>
+              <p>
+                Automated Salesforce audit-log review with more than six months of stored trail, custom
+                alerts for unexpected user activation and service-account changes, and tagging of CR,
+                task, and incident numbers.
+              </p>
+              <a
+                class="link-arrow"
+                href="https://docs.google.com/presentation/d/1R2_GhzffWuRhgK9oguy_OG8Ep9uWIhbY/edit?usp=drivesdk&amp;ouid=103841655199648855846&amp;rtpof=true&amp;sd=true"
+                target="_blank"
+                rel="noopener noreferrer"
+                >View walkthrough <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg></a>
+            </article>
+            <article class="project spot reveal">
+              <div class="project-top">
+                <div class="card-ico">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M9 6h11M9 12h11M9 18h7" /><circle cx="4.5" cy="6" r="1.2" /><circle cx="4.5" cy="12" r="1.2" />
+                    <path d="M19 16v6M16 19h6" />
+                  </svg>
+                </div>
+                <span class="project-no">B</span>
+              </div>
+              <h3>Dynamic Picklist</h3>
+              <p>
+                Lets business users add picklist values themselves: no monthly release, no change
+                request, and no IT bottleneck for a value that should be live the same day.
+              </p>
+              <a
+                class="link-arrow"
+                href="https://drive.google.com/file/d/1R0RZ_pJZEzkjgpCcjE4Mqijm9CLy1rFF/view"
+                target="_blank"
+                rel="noopener noreferrer"
+                >View overview <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg></a>
+            </article>
+            <article class="project spot reveal">
+              <div class="project-top">
+                <div class="card-ico">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="9" cy="8" r="3.2" /><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" />
+                    <path d="M16 5.2a3.2 3.2 0 0 1 0 5.6M18 14.4c1.8.9 3 2.8 3 5.6" />
+                  </svg>
+                </div>
+                <span class="project-no">C</span>
+              </div>
+              <h3>User Clone Tool</h3>
+              <p>
+                Clones permission sets, public groups, and queues so a new user is set up in a few
+                clicks, with a direct path to IT when something does not match.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="credentials" class="section">
+        <div class="wrap">
+          <header class="section-head reveal">
+            <p class="section-tag">04 — Credentials</p>
+            <h2>Certified on the platform</h2>
+          </header>
+
+          <div class="creds">
+            <article class="cred spot reveal">
+              <div class="cred-ico cert">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="9" r="6" /><path d="M9.5 9l1.8 1.8L14.8 7.3" /><path d="M8.5 14l-1.5 7 5-2.5 5 2.5-1.5-7" />
+                </svg>
+              </div>
+              <p class="cred-type">Accredited Professional</p>
+              <h3>Agentforce Manufacturing</h3>
+              <p class="cred-full">Salesforce Accredited Agentforce Manufacturing Professional</p>
+            </article>
+            <article class="cred spot reveal">
+              <div class="cred-ico cert">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="9" r="6" /><path d="M9.5 9l1.8 1.8L14.8 7.3" /><path d="M8.5 14l-1.5 7 5-2.5 5 2.5-1.5-7" />
+                </svg>
+              </div>
+              <p class="cred-type">Certification</p>
+              <h3>Platform Administrator</h3>
+              <p class="cred-full">Salesforce Certified Platform Administrator</p>
+            </article>
+            <article class="cred spot reveal">
+              <div class="cred-ico cert">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="9" r="6" /><path d="M9.5 9l1.8 1.8L14.8 7.3" /><path d="M8.5 14l-1.5 7 5-2.5 5 2.5-1.5-7" />
+                </svg>
+              </div>
+              <p class="cred-type">Certification</p>
+              <h3>Platform Developer</h3>
+              <p class="cred-full">Salesforce Certified Platform Developer</p>
+            </article>
+            <article class="cred spot reveal">
+              <div class="cred-ico cert">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="9" r="6" /><path d="M9.5 9l1.8 1.8L14.8 7.3" /><path d="M8.5 14l-1.5 7 5-2.5 5 2.5-1.5-7" />
+                </svg>
+              </div>
+              <p class="cred-type">Certification</p>
+              <h3>Agentforce Sales Consultant</h3>
+              <p class="cred-full">Salesforce Certified Agentforce Sales Consultant</p>
+            </article>
+            <article class="cred spot reveal">
+              <div class="cred-ico super">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2.5l8.2 4.75v9.5L12 21.5l-8.2-4.75v-9.5z" /><path d="M12 7.5l1.4 2.9 3.1.4-2.3 2.2.6 3.1-2.8-1.5-2.8 1.5.6-3.1-2.3-2.2 3.1-.4z" />
+                </svg>
+              </div>
+              <p class="cred-type">Superbadge</p>
+              <h3>Data Protection</h3>
+              <p class="cred-full">Superbadge: Data Protection</p>
+            </article>
+            <article class="cred spot reveal">
+              <div class="cred-ico super">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2.5l8.2 4.75v9.5L12 21.5l-8.2-4.75v-9.5z" /><path d="M12 7.5l1.4 2.9 3.1.4-2.3 2.2.6 3.1-2.8-1.5-2.8 1.5.6-3.1-2.3-2.2 3.1-.4z" />
+                </svg>
+              </div>
+              <p class="cred-type">Superbadge</p>
+              <h3>Selling with Sales Cloud</h3>
+              <p class="cred-full">Selling with Sales Cloud Specialist</p>
+            </article>
+          </div>
+
+          <div class="cred-footer reveal">
+            <div class="edu">
+              <p class="mini-label">Education</p>
+              <p><strong>B.Tech, Engineering</strong> · KIIT, Bhubaneswar · 2017 — 2021</p>
+            </div>
+            <div class="edu">
+              <p class="mini-label">Languages</p>
+              <p><strong>English</strong> · German</p>
+            </div>
             <a
-              href="https://wa.me/4917669524643"
-              target="_blank"
-              rel="noopener noreferrer"
-              >17669524643</a
-            >
-          </li>
-          <li>
-            <span>LinkedIn</span>
-            <a
-              href="https://www.linkedin.com/in/ayush-tandon-%E2%98%81%EF%B8%8F-2640991a8"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Ayush Tandon</a
-            >
-          </li>
-          <li>
-            <span>Trailblazer</span>
-            <a
+              class="btn btn-ghost"
               href="https://www.salesforce.com/trailblazer/atandon50"
               target="_blank"
               rel="noopener noreferrer"
-              >atandon50</a
+              >Verify on Trailblazer</a
             >
-          </li>
-        </ul>
-        <p class="fine">
-          Site built from the October 2026 CV. Passport, date of birth, and home
-          address are left off this page.
-        </p>
-      </footer>
-    </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section skills-section">
+        <div class="wrap">
+          <header class="section-head reveal">
+            <p class="section-tag">05 — Toolkit</p>
+            <h2>What I work with</h2>
+          </header>
+          <div class="skills">
+            <div class="skill-group reveal">
+              <h3>Salesforce</h3>
+              <ul class="chips">
+                <li>Apex</li><li>Flows</li><li>Agentforce</li><li>Sales Cloud</li><li>Service Cloud</li>
+                <li>Experience Cloud</li><li>Data Cloud</li><li>Open CTI</li><li>Dataloader</li><li>Workbench</li><li>Gearset</li>
+              </ul>
+            </div>
+            <div class="skill-group reveal">
+              <h3>Contact center</h3>
+              <ul class="chips">
+                <li>Talkdesk</li><li>Genesys</li><li>Amazon Connect</li><li>IVR design</li><li>Ring groups</li><li>Call routing</li>
+              </ul>
+            </div>
+            <div class="skill-group reveal">
+              <h3>Identity &amp; integration</h3>
+              <ul class="chips">
+                <li>Azure AD SSO</li><li>SAML</li><li>Make.com</li><li>REST API</li><li>SOAP API</li><li>Postman</li>
+              </ul>
+            </div>
+            <div class="skill-group reveal">
+              <h3>Engineering</h3>
+              <ul class="chips">
+                <li>JavaScript</li><li>Java</li><li>SQL</li><li>HTML &amp; CSS</li><li>Git</li><li>Automation Anywhere 360</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact">
+        <div class="contact-glow" aria-hidden="true"></div>
+        <div class="wrap contact-layout">
+          <div class="contact-copy reveal">
+            <p class="section-tag">06 — Contact</p>
+            <h2>Let’s build something that holds.</h2>
+            <p class="lede">
+              Salesforce, Talkdesk, or a contact-center build that needs to sit cleanly on CRM. Send a
+              message and I’ll reply by email.
+            </p>
+            <ul class="channels">
+              <li>
+                <span class="ch-label">Email</span>
+                <a href="mailto:Ayushtandon717@gmail.com">Ayushtandon717@gmail.com</a>
+              </li>
+              <li>
+                <span class="ch-label">Phone</span>
+                <button class="text-btn" type="button" data-open-phone>
+                  Request my number
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </button>
+              </li>
+              <li>
+                <span class="ch-label">LinkedIn</span>
+                <a
+                  href="https://www.linkedin.com/in/ayush-tandon-%E2%98%81%EF%B8%8F-2640991a8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Ayush Tandon</a
+                >
+              </li>
+              <li>
+                <span class="ch-label">Trailblazer</span>
+                <a href="https://www.salesforce.com/trailblazer/atandon50" target="_blank" rel="noopener noreferrer">atandon50</a>
+              </li>
+            </ul>
+          </div>
+
+          <form class="panel form reveal" id="contact-form" novalidate>
+            <h3>Send a message</h3>
+            <div class="field-row">
+              <label class="field">
+                <span>Name</span>
+                <input name="name" type="text" autocomplete="name" required maxlength="120" />
+              </label>
+              <label class="field">
+                <span>Email</span>
+                <input name="email" type="email" autocomplete="email" required maxlength="200" />
+              </label>
+            </div>
+            <label class="field">
+              <span>Message</span>
+              <textarea name="message" rows="5" required maxlength="5000"></textarea>
+            </label>
+            <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <button class="btn btn-primary btn-block" type="submit">
+              <span class="btn-label">Send message</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2.5-6.5z" /></svg>
+            </button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer-inner">
+        <p>© <span id="year">2026</span> Ayush Tandon</p>
+        <a href="#top" class="link-arrow">Back to top <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" /></svg></a>
+      </div>
+    </footer>
+
+    <dialog class="dialog" id="phone-dialog" aria-labelledby="phone-title">
+      <form class="dialog-body form" id="phone-form" novalidate>
+        <button class="dialog-close" type="button" data-close aria-label="Close">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+        </button>
+        <div class="card-ico">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" />
+          </svg>
+        </div>
+        <h3 id="phone-title">Request my phone number</h3>
+        <p class="dialog-text">Tell me who you are and I’ll email my number to you.</p>
+        <label class="field">
+          <span>Name</span>
+          <input name="name" type="text" autocomplete="name" required maxlength="120" />
+        </label>
+        <label class="field">
+          <span>Email</span>
+          <input name="email" type="email" autocomplete="email" required maxlength="200" />
+        </label>
+        <label class="field">
+          <span>Company <em>(optional)</em></span>
+          <input name="company" type="text" autocomplete="organization" maxlength="160" />
+        </label>
+        <label class="field">
+          <span>Reason <em>(optional)</em></span>
+          <textarea name="reason" rows="3" maxlength="1000"></textarea>
+        </label>
+        <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <button class="btn btn-primary btn-block" type="submit">
+          <span class="btn-label">Send request</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2.5-6.5z" /></svg>
+        </button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </dialog>
   </body>
 </html>
