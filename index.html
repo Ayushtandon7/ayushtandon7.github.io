@@ -52,6 +52,7 @@
           <a href="#work">Work</a>
           <a href="#experience">Experience</a>
           <a href="#projects">Projects</a>
+          <a href="#integrations">Integrations</a>
           <a href="#credentials">Credentials</a>
           <a class="nav-cta" href="#contact">Contact</a>
         </nav>
@@ -105,41 +106,41 @@
             </div>
           </div>
 
-          <aside class="console reveal" aria-label="Illustration of a call routed from Talkdesk to Salesforce">
+          <aside class="console reveal" aria-label="Talkdesk to Azure middleware flow">
             <div class="console-head">
               <span class="dots"><i></i><i></i><i></i></span>
-              <span class="mono">talkdesk → salesforce</span>
+              <span class="mono">talkdesk → make → azure</span>
               <span class="live"><span class="pulse-dot"></span>live</span>
             </div>
             <ol class="flow" id="flow">
               <li>
                 <span class="step-no">01</span>
-                <div><strong>Inbound call</strong><span>Number matched to its flow</span></div>
+                <div><strong>Call webhook</strong><span>Talkdesk sends the finished call</span></div>
                 <span class="tick" aria-hidden="true"></span>
               </li>
               <li>
                 <span class="step-no">02</span>
-                <div><strong>IVR menu</strong><span>Language and intent captured</span></div>
+                <div><strong>OAuth token</strong><span>Reuse the cache, or refresh it</span></div>
                 <span class="tick" aria-hidden="true"></span>
               </li>
               <li>
                 <span class="step-no">03</span>
-                <div><strong>Data dip</strong><span>Customer found in Salesforce</span></div>
+                <div><strong>Recording</strong><span>Fetch the file and follow the media link</span></div>
                 <span class="tick" aria-hidden="true"></span>
               </li>
               <li>
                 <span class="step-no">04</span>
-                <div><strong>Ring group</strong><span>Routed to the right team</span></div>
+                <div><strong>Azure API</strong><span>Normalized payload handed off</span></div>
                 <span class="tick" aria-hidden="true"></span>
               </li>
               <li>
                 <span class="step-no">05</span>
-                <div><strong>Wrap-up</strong><span>Case logged with AI summary</span></div>
+                <div><strong>Fallback</strong><span>Metadata still sent if no recording</span></div>
                 <span class="tick" aria-hidden="true"></span>
               </li>
             </ol>
             <div class="console-foot">
-              <span class="mono">call journey</span>
+              <span class="mono">middleware</span>
               <span class="console-bar"><i></i></span>
             </div>
           </aside>
@@ -289,8 +290,34 @@
         <div class="wrap">
           <header class="section-head reveal">
             <p class="section-tag">03 — Projects</p>
-            <h2>Tools that removed the wait</h2>
+            <h2>From architecture to handoff</h2>
           </header>
+          <article class="case spot reveal">
+            <div class="case-copy">
+              <p class="meta">Enpal · Make.com middleware</p>
+              <h3>Talkdesk–Azure call middleware</h3>
+              <p>
+                Designed and deployed the integration that sits between Talkdesk and Azure. A finished
+                call arrives on a webhook. The scenario waits for the recording, reuses a cached OAuth
+                token or requests a new one, retrieves the recording, and posts one normalized payload
+                to Azure. If the recording is not available yet, the call metadata is still delivered.
+              </p>
+              <ul class="chips">
+                <li>Architecture</li>
+                <li>OAuth client credentials</li>
+                <li>Token cache</li>
+                <li>Recordings API</li>
+                <li>Two delivery paths</li>
+                <li>Azure API handoff</li>
+              </ul>
+            </div>
+            <ol class="arch" aria-label="Middleware architecture">
+              <li><strong>Talkdesk</strong><span>Call-ended webhook</span></li>
+              <li><strong>Make.com</strong><span>Auth, mapping, delivery</span></li>
+              <li><strong>Recordings</strong><span>Media link when ready</span></li>
+              <li><strong>Azure</strong><span>Authenticated API delivery</span></li>
+            </ol>
+          </article>
           <div class="projects">
             <article class="project spot reveal">
               <div class="project-top">
@@ -357,10 +384,53 @@
         </div>
       </section>
 
+      <section id="integrations" class="section">
+        <div class="wrap">
+          <header class="section-head reveal">
+            <p class="section-tag">04 — Integrations</p>
+            <h2>Systems I connect</h2>
+          </header>
+          <div class="integrations">
+            <article class="card spot reveal">
+              <p class="meta">Make.com · Talkdesk · Azure</p>
+              <h3>Call events into Azure</h3>
+              <p>
+                Webhook in, authenticated API out. Call context, agent, queue, duration, and the
+                recording link travel as one payload. A separate path covers calls with no recording.
+              </p>
+            </article>
+            <article class="card spot reveal">
+              <p class="meta">Talkdesk · OAuth</p>
+              <h3>Token lifecycle</h3>
+              <p>
+                Client-credentials tokens are stored and reused. When the stored token is missing or
+                expired, the scenario requests a new one before it calls the Recordings API.
+              </p>
+            </article>
+            <article class="card spot reveal">
+              <p class="meta">Azure AD · Talkdesk</p>
+              <h3>SAML single sign-on</h3>
+              <p>
+                Centralized Talkdesk login through Microsoft Azure AD, so access follows the company
+                identity instead of a separate password.
+              </p>
+            </article>
+            <article class="card spot reveal">
+              <p class="meta">Salesforce · Talkdesk · Airtable</p>
+              <h3>Contact-center connections</h3>
+              <p>
+                CTI, data dips, and operational integrations across Salesforce and Airtable, including
+                the Talkdesk–Azure speech-to-text architecture.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section id="credentials" class="section">
         <div class="wrap">
           <header class="section-head reveal">
-            <p class="section-tag">04 — Credentials</p>
+            <p class="section-tag">05 — Credentials</p>
             <h2>Certified on the platform</h2>
           </header>
 
@@ -450,7 +520,7 @@
       <section class="section skills-section">
         <div class="wrap">
           <header class="section-head reveal">
-            <p class="section-tag">05 — Toolkit</p>
+            <p class="section-tag">06 — Toolkit</p>
             <h2>What I work with</h2>
           </header>
           <div class="skills">
@@ -487,7 +557,7 @@
         <div class="contact-glow" aria-hidden="true"></div>
         <div class="wrap contact-layout">
           <div class="contact-copy reveal">
-            <p class="section-tag">06 — Contact</p>
+            <p class="section-tag">07 — Contact</p>
             <h2>Let’s build something that holds.</h2>
             <p class="lede">
               Salesforce, Talkdesk, or a contact-center build that needs to sit cleanly on CRM. Send a

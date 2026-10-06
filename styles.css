@@ -1057,6 +1057,98 @@ h3 {
 
 /* Projects */
 
+.case {
+  display: grid;
+  gap: 1.6rem;
+  margin-bottom: 1.2rem;
+  padding: 1.8rem;
+}
+
+@media (min-width: 880px) {
+  .case {
+    grid-template-columns: 1.35fr 0.9fr;
+    align-items: center;
+    gap: 2.4rem;
+  }
+}
+
+.case h3 {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.case p:not(.meta) {
+  margin: 0;
+  color: var(--muted);
+}
+
+.case .chips {
+  margin-top: 1.3rem;
+}
+
+.arch {
+  list-style: none;
+  margin: 0;
+  padding: 0.2rem 0 0.2rem 0.2rem;
+  display: grid;
+  gap: 0;
+}
+
+.arch li {
+  position: relative;
+  padding: 0.85rem 0 0.85rem 1.6rem;
+}
+
+.arch li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--blue), var(--cyan));
+}
+
+.arch li::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: 1.15rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--cyan);
+  box-shadow: 0 0 12px rgba(51, 225, 199, 0.55);
+}
+
+.arch strong {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.arch span {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.integrations {
+  display: grid;
+  gap: 1.2rem;
+}
+
+@media (min-width: 880px) {
+  .integrations {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.integrations .card h3 {
+  margin-bottom: 0.6rem;
+}
+
 .projects {
   display: grid;
   gap: 1.2rem;
