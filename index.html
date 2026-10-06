@@ -24,11 +24,12 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Sora:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=6" />
+    <link rel="stylesheet" href="styles.css?v=7" />
     <script>
       document.documentElement.classList.add("js");
     </script>
-    <script src="main.js?v=6" defer></script>
+    <script src="i18n.js?v=7" defer></script>
+    <script src="main.js?v=7" defer></script>
   </head>
   <body>
     <div class="progress" aria-hidden="true"></div>
@@ -49,13 +50,17 @@
           <span></span><span></span>
         </button>
         <nav id="nav-links" class="nav-links">
-          <a href="#work">Work</a>
-          <a href="#experience">Experience</a>
-          <a href="#projects">Projects</a>
-          <a href="#integrations">Integrations</a>
-          <a href="#credentials">Credentials</a>
-          <a class="nav-cta" href="#contact">Contact</a>
+          <a href="#work" data-i18n="nav.work">Work</a>
+          <a href="#experience" data-i18n="nav.experience">Experience</a>
+          <a href="#projects" data-i18n="nav.projects">Projects</a>
+          <a href="#integrations" data-i18n="nav.integrations">Integrations</a>
+          <a href="#credentials" data-i18n="nav.credentials">Credentials</a>
+          <a class="nav-cta" href="#contact" data-i18n="nav.contact">Contact</a>
         </nav>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="de" aria-pressed="false">DE</button>
+        </div>
       </div>
     </header>
 
@@ -68,25 +73,25 @@
         <div class="wrap hero-layout">
           <div class="hero-copy">
             <p class="eyebrow reveal">
-              <span class="pulse-dot"></span>Salesforce &amp; CTI Engineer · Germany
+              <span class="pulse-dot"></span><span data-i18n="hero.kicker">Salesforce &amp; CTI Engineer · Germany</span>
             </p>
             <h1 class="reveal">Ayush <span class="grad-text">Tandon</span></h1>
             <p class="hero-role reveal">
-              I build
+              <span data-i18n="hero.build">I build</span>
               <span
                 class="rotator"
                 data-words='["Salesforce automation","contact-center routing","CRM and CTI integrations","secure SSO for teams"]'
                 >Salesforce automation</span
               >
             </p>
-            <p class="lede reveal">
+            <p class="lede reveal" data-i18n="hero.lede">
               Six years designing the systems between CRM and the contact center: Flows and
               Apex on Salesforce, routing and IVR on Talkdesk, and the identity and automation
               layers that keep them in sync.
             </p>
             <div class="actions reveal">
               <a class="btn btn-primary" href="#contact">
-                Send a message
+                <span data-i18n="hero.cta">Send a message</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
               </a>
               <a
@@ -118,32 +123,32 @@
                   <ol class="flow">
                     <li>
                       <span class="step-no">01</span>
-                      <div><strong>Inbound call</strong><span>Number matched to its flow</span></div>
+                      <div><strong data-i18n="flow.in">Inbound call</strong><span data-i18n="flow.in.d">Number matched to its flow</span></div>
                       <span class="tick" aria-hidden="true"></span>
                     </li>
                     <li>
                       <span class="step-no">02</span>
-                      <div><strong>IVR menu</strong><span>Language and intent captured</span></div>
+                      <div><strong data-i18n="flow.ivr">IVR menu</strong><span data-i18n="flow.ivr.d">Language and intent captured</span></div>
                       <span class="tick" aria-hidden="true"></span>
                     </li>
                     <li>
                       <span class="step-no">03</span>
-                      <div><strong>Data dip</strong><span>Customer found in Salesforce</span></div>
+                      <div><strong data-i18n="flow.dip">Data dip</strong><span data-i18n="flow.dip.d">Customer found in Salesforce</span></div>
                       <span class="tick" aria-hidden="true"></span>
                     </li>
                     <li>
                       <span class="step-no">04</span>
-                      <div><strong>Ring group</strong><span>Routed to the right team</span></div>
+                      <div><strong data-i18n="flow.ring">Ring group</strong><span data-i18n="flow.ring.d">Routed to the right team</span></div>
                       <span class="tick" aria-hidden="true"></span>
                     </li>
                     <li>
                       <span class="step-no">05</span>
-                      <div><strong>Wrap-up</strong><span>Case logged with AI summary</span></div>
+                      <div><strong data-i18n="flow.wrap">Wrap-up</strong><span data-i18n="flow.wrap.d">Case logged with AI summary</span></div>
                       <span class="tick" aria-hidden="true"></span>
                     </li>
                   </ol>
                   <div class="console-foot">
-                    <span class="mono">call journey</span>
+                    <span class="mono" data-i18n="flow.journey">call journey</span>
                     <span class="console-bar"><i></i></span>
                   </div>
                 </article>
@@ -156,32 +161,32 @@
                   <ol class="flow">
                     <li>
                       <span class="step-no">01</span>
-                      <div><strong>Call webhook</strong><span>Finished call arrives in Make</span></div>
+                      <div><strong data-i18n="mw.hook">Call webhook</strong><span data-i18n="mw.hook.d">Finished call arrives in Make</span></div>
                       <span class="tick" aria-hidden="true"></span>
                     </li>
                     <li>
                       <span class="step-no">02</span>
-                      <div><strong>OAuth token</strong><span>Reuse the cache, or refresh it</span></div>
+                      <div><strong data-i18n="mw.token">OAuth token</strong><span data-i18n="mw.token.d">Reuse the cache, or refresh it</span></div>
                       <span class="tick" aria-hidden="true"></span>
                     </li>
                     <li>
                       <span class="step-no">03</span>
-                      <div><strong>Recording</strong><span>Fetch the file and follow the media link</span></div>
+                      <div><strong data-i18n="mw.rec">Recording</strong><span data-i18n="mw.rec.d">Fetch the file and follow the media link</span></div>
                       <span class="tick" aria-hidden="true"></span>
                     </li>
                     <li>
                       <span class="step-no">04</span>
-                      <div><strong>Transcribe audio</strong><span>Audio file converted to a transcript</span></div>
+                      <div><strong data-i18n="mw.tr">Transcribe audio</strong><span data-i18n="mw.tr.d">Audio file converted to a transcript</span></div>
                       <span class="tick" aria-hidden="true"></span>
                     </li>
                     <li>
                       <span class="step-no">05</span>
-                      <div><strong>Azure API</strong><span>Transcript and call payload handed off</span></div>
+                      <div><strong data-i18n="mw.api">Azure API</strong><span data-i18n="mw.api.d">Transcript and call payload handed off</span></div>
                       <span class="tick" aria-hidden="true"></span>
                     </li>
                   </ol>
                   <div class="console-foot">
-                    <span class="mono">middleware</span>
+                    <span class="mono" data-i18n="mw.foot">middleware</span>
                     <span class="console-bar"><i></i></span>
                   </div>
                 </article>
@@ -202,19 +207,19 @@
         <div class="wrap stats">
           <div class="stat reveal">
             <span class="num" data-count="6" data-suffix="+">6+</span>
-            <span class="label">Years in Salesforce &amp; CTI</span>
+            <span class="label" data-i18n="stat.years">Years in Salesforce &amp; CTI</span>
           </div>
           <div class="stat reveal">
             <span class="num" data-count="1000" data-suffix="+">1,000+</span>
-            <span class="label">Talkdesk users onboarded</span>
+            <span class="label" data-i18n="stat.users">Talkdesk users onboarded</span>
           </div>
           <div class="stat reveal">
             <span class="num" data-count="80" data-suffix="+">80+</span>
-            <span class="label">Phone numbers consolidated</span>
+            <span class="label" data-i18n="stat.numbers">Phone numbers consolidated</span>
           </div>
           <div class="stat reveal">
             <span class="num" data-count="6">6</span>
-            <span class="label">Salesforce credentials</span>
+            <span class="label" data-i18n="stat.creds">Salesforce credentials</span>
           </div>
         </div>
       </section>
@@ -239,8 +244,8 @@
       <section id="work" class="section">
         <div class="wrap">
           <header class="section-head reveal">
-            <p class="section-tag">01 — Selected work</p>
-            <h2>Systems that run every day</h2>
+            <p class="section-tag" data-i18n="work.tag">01 — Selected work</p>
+            <h2 data-i18n="work.title">Systems that run every day</h2>
           </header>
           <div class="cards">
             <article class="card spot reveal">
@@ -251,8 +256,8 @@
                 </svg>
               </div>
               <p class="meta">Enpal · Talkdesk</p>
-              <h3>Contact-center architecture</h3>
-              <p>
+              <h3 data-i18n="work.c1.t">Contact-center architecture</h3>
+              <p data-i18n="work.c1.p">
                 Redesigned routing across 80+ numbers and multiple ring groups into one maintainable
                 architecture, with IVR, data dips, and business-system integrations. Onboarded 1,000+
                 users with AI transcription, mobile CTI, and Airtable connections.
@@ -265,9 +270,9 @@
                   <path d="M12 3l7 3v6c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z" /><path d="M9 12l2 2 4-4" />
                 </svg>
               </div>
-              <p class="meta">Enpal · Identity &amp; automation</p>
-              <h3>SSO and integration backbone</h3>
-              <p>
+              <p class="meta" data-i18n="work.c2.m">Enpal · Identity &amp; automation</p>
+              <h3 data-i18n="work.c2.t">SSO and integration backbone</h3>
+              <p data-i18n="work.c2.p">
                 SAML SSO with Microsoft Azure AD and a centralized Make.com integration layer. Designed
                 the Talkdesk–Azure Speech-to-Text architecture and helped move custom data tables to
                 standard models across Salesforce and Talkdesk.
@@ -280,9 +285,9 @@
                   <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z" /><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5" />
                 </svg>
               </div>
-              <p class="meta">Accenture · Packaged tools</p>
-              <h3>Salesforce packages</h3>
-              <p>
+              <p class="meta" data-i18n="work.c3.m">Accenture · Packaged tools</p>
+              <h3 data-i18n="work.c3.t">Salesforce packages</h3>
+              <p data-i18n="work.c3.p">
                 Installed packages that cut IT wait time: Dynamic Picklist for business-owned values, an
                 Audit Automation Tool with long-term retention and tagged reporting, and a User Clone
                 Tool for fast, consistent user setup.
@@ -296,42 +301,42 @@
       <section id="experience" class="section">
         <div class="wrap">
           <header class="section-head reveal">
-            <p class="section-tag">02 — Experience</p>
-            <h2>Where I’ve built</h2>
+            <p class="section-tag" data-i18n="exp.tag">02 — Experience</p>
+            <h2 data-i18n="exp.title">Where I’ve built</h2>
           </header>
           <ol class="timeline reveal">
             <li class="role reveal">
               <div class="role-when">
-                <span class="badge-now">Current</span>
-                <span>Apr 2025 — Present</span>
-                <span>Berlin, Germany</span>
+                <span class="badge-now" data-i18n="exp.now">Current</span>
+                <span data-i18n="exp.d1">Apr 2025 — Present</span>
+                <span data-i18n="exp.l1">Berlin, Germany</span>
               </div>
               <div class="role-body spot">
-                <h3>Salesforce and CTI Engineer</h3>
+                <h3 data-i18n="exp.r1">Salesforce and CTI Engineer</h3>
                 <p class="org">Enpal</p>
                 <ul>
-                  <li>Build and deploy Salesforce solutions across Sales, Service, and Experience Cloud, with Flows and Apex triggers that remove manual work.</li>
-                  <li>Designed end-to-end Talkdesk CTI: IVR, call flows, routing, ring groups, data dips, and business-system integrations.</li>
-                  <li>Consolidated 80+ phone numbers and multiple ring groups into one scalable routing architecture.</li>
-                  <li>Rolled out AI transcription and summaries, mobile CTI, and Airtable integrations while onboarding 1,000+ users.</li>
-                  <li>Implemented SAML SSO with Microsoft Azure AD and a centralized Make.com integration architecture.</li>
-                  <li>Support Salesforce and CTI technical interviews, release management, and documentation.</li>
+                  <li data-i18n="exp.r1.1">Build and deploy Salesforce solutions across Sales, Service, and Experience Cloud, with Flows and Apex triggers that remove manual work.</li>
+                  <li data-i18n="exp.r1.2">Designed end-to-end Talkdesk CTI: IVR, call flows, routing, ring groups, data dips, and business-system integrations.</li>
+                  <li data-i18n="exp.r1.3">Consolidated 80+ phone numbers and multiple ring groups into one scalable routing architecture.</li>
+                  <li data-i18n="exp.r1.4">Rolled out AI transcription and summaries, mobile CTI, and Airtable integrations while onboarding 1,000+ users.</li>
+                  <li data-i18n="exp.r1.5">Implemented SAML SSO with Microsoft Azure AD and a centralized Make.com integration architecture.</li>
+                  <li data-i18n="exp.r1.6">Support Salesforce and CTI technical interviews, release management, and documentation.</li>
                 </ul>
               </div>
             </li>
             <li class="role reveal">
               <div class="role-when">
-                <span>Jul 2021 — Mar 2025</span>
-                <span>Bangalore, India</span>
+                <span data-i18n="exp.d2">Jul 2021 — Mar 2025</span>
+                <span data-i18n="exp.l2">Bangalore, India</span>
               </div>
               <div class="role-body spot">
-                <h3>Senior Salesforce Analyst</h3>
+                <h3 data-i18n="exp.r2">Senior Salesforce Analyst</h3>
                 <p class="org">Accenture</p>
                 <ul>
-                  <li>Turned product-owner needs into user stories and acceptance criteria in Jira and ServiceNow.</li>
-                  <li>Configured objects, validation rules, Flows, permission sets, and profiles across Sales, Service, and Experience Cloud.</li>
-                  <li>Built Automation Anywhere 360 bots for Salesforce, Outlook, and ServiceNow.</li>
-                  <li>Shipped Dynamic Picklist, Audit Automation Tool, and User Clone Tool packages used across multiple orgs.</li>
+                  <li data-i18n="exp.r2.1">Turned product-owner needs into user stories and acceptance criteria in Jira and ServiceNow.</li>
+                  <li data-i18n="exp.r2.2">Configured objects, validation rules, Flows, permission sets, and profiles across Sales, Service, and Experience Cloud.</li>
+                  <li data-i18n="exp.r2.3">Built Automation Anywhere 360 bots for Salesforce, Outlook, and ServiceNow.</li>
+                  <li data-i18n="exp.r2.4">Shipped Dynamic Picklist, Audit Automation Tool, and User Clone Tool packages used across multiple orgs.</li>
                 </ul>
               </div>
             </li>
@@ -342,33 +347,33 @@
       <section id="projects" class="section">
         <div class="wrap">
           <header class="section-head reveal">
-            <p class="section-tag">03 — Projects</p>
-            <h2>From architecture to handoff</h2>
+            <p class="section-tag" data-i18n="proj.tag">03 — Projects</p>
+            <h2 data-i18n="proj.title">From architecture to handoff</h2>
           </header>
           <article class="case spot reveal">
             <div class="case-copy">
-              <p class="meta">Enpal · Make.com middleware</p>
-              <h3>Talkdesk–Azure call middleware</h3>
-              <p>
+              <p class="meta" data-i18n="proj.case.m">Enpal · Make.com middleware</p>
+              <h3 data-i18n="proj.case.t">Talkdesk–Azure call middleware</h3>
+              <p data-i18n="proj.case.p">
                 Designed and deployed the integration that sits between the contact center and Azure. A finished
                 call arrives on a webhook. The scenario waits for the recording, reuses a cached OAuth
                 token or requests a new one, retrieves the audio, transcribes it, and posts one normalized payload
                 to Azure.
               </p>
               <ul class="chips">
-                <li>Architecture</li>
-                <li>OAuth client credentials</li>
-                <li>Token cache</li>
+                <li data-i18n="proj.chip1">Architecture</li>
+                <li data-i18n="proj.chip2">OAuth client credentials</li>
+                <li data-i18n="proj.chip3">Token cache</li>
                 <li>Recordings API</li>
-                <li>Audio transcription</li>
-                <li>Azure API handoff</li>
+                <li data-i18n="proj.chip5">Audio transcription</li>
+                <li data-i18n="proj.chip6">Azure API handoff</li>
               </ul>
             </div>
             <ol class="arch" aria-label="Middleware architecture">
-              <li><strong>CTI</strong><span>Call-ended webhook</span></li>
-              <li><strong>Make.com</strong><span>Auth, mapping, delivery</span></li>
-              <li><strong>Transcript</strong><span>Audio file converted to text</span></li>
-              <li><strong>Azure</strong><span>Authenticated API delivery</span></li>
+              <li><strong>CTI</strong><span data-i18n="arch.1">Call-ended webhook</span></li>
+              <li><strong>Make.com</strong><span data-i18n="arch.2">Auth, mapping, delivery</span></li>
+              <li><strong data-i18n="arch.3t">Transcript</strong><span data-i18n="arch.3">Audio file converted to text</span></li>
+              <li><strong>Azure</strong><span data-i18n="arch.4">Authenticated API delivery</span></li>
             </ol>
           </article>
           <div class="projects">
@@ -383,7 +388,7 @@
                 <span class="project-no">A</span>
               </div>
               <h3>Audit Automation Tool</h3>
-              <p>
+              <p data-i18n="proj.a.p">
                 Automated Salesforce audit-log review with more than six months of stored trail, custom
                 alerts for unexpected user activation and service-account changes, and tagging of CR,
                 task, and incident numbers.
@@ -393,7 +398,7 @@
                 href="https://docs.google.com/presentation/d/1R2_GhzffWuRhgK9oguy_OG8Ep9uWIhbY/edit?usp=drivesdk&amp;ouid=103841655199648855846&amp;rtpof=true&amp;sd=true"
                 target="_blank"
                 rel="noopener noreferrer"
-                >View walkthrough <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg></a>
+                ><span data-i18n="proj.a.link">View walkthrough</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg></a>
             </article>
             <article class="project spot reveal">
               <div class="project-top">
@@ -406,7 +411,7 @@
                 <span class="project-no">B</span>
               </div>
               <h3>Dynamic Picklist</h3>
-              <p>
+              <p data-i18n="proj.b.p">
                 Lets business users add picklist values themselves: no monthly release, no change
                 request, and no IT bottleneck for a value that should be live the same day.
               </p>
@@ -415,7 +420,7 @@
                 href="https://drive.google.com/file/d/1R0RZ_pJZEzkjgpCcjE4Mqijm9CLy1rFF/view"
                 target="_blank"
                 rel="noopener noreferrer"
-                >View overview <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg></a>
+                ><span data-i18n="proj.b.link">View overview</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg></a>
             </article>
             <article class="project spot reveal">
               <div class="project-top">
@@ -428,7 +433,7 @@
                 <span class="project-no">C</span>
               </div>
               <h3>User Clone Tool</h3>
-              <p>
+              <p data-i18n="proj.c.p">
                 Clones permission sets, public groups, and queues so a new user is set up in a few
                 clicks, with a direct path to IT when something does not match.
               </p>
@@ -440,38 +445,38 @@
       <section id="integrations" class="section">
         <div class="wrap">
           <header class="section-head reveal">
-            <p class="section-tag">04 — Integrations</p>
-            <h2>Systems I connect</h2>
+            <p class="section-tag" data-i18n="int.tag">04 — Integrations</p>
+            <h2 data-i18n="int.title">Systems I connect</h2>
           </header>
           <div class="integrations">
             <article class="card spot reveal">
               <p class="meta">Make.com · Talkdesk · Azure</p>
-              <h3>Call events into Azure</h3>
-              <p>
+              <h3 data-i18n="int.1.t">Call events into Azure</h3>
+              <p data-i18n="int.1.p">
                 Webhook in, authenticated API out. Call context, agent, queue, duration, and the
                 recording link travel as one payload, and the audio file is transcribed.
               </p>
             </article>
             <article class="card spot reveal">
               <p class="meta">Talkdesk · OAuth</p>
-              <h3>Token lifecycle</h3>
-              <p>
+              <h3 data-i18n="int.2.t">Token lifecycle</h3>
+              <p data-i18n="int.2.p">
                 Client-credentials tokens are stored and reused. When the stored token is missing or
                 expired, the scenario requests a new one before it calls the Recordings API.
               </p>
             </article>
             <article class="card spot reveal">
               <p class="meta">Azure AD · Talkdesk</p>
-              <h3>SAML single sign-on</h3>
-              <p>
+              <h3 data-i18n="int.3.t">SAML single sign-on</h3>
+              <p data-i18n="int.3.p">
                 Centralized Talkdesk login through Microsoft Azure AD, so access follows the company
                 identity instead of a separate password.
               </p>
             </article>
             <article class="card spot reveal">
               <p class="meta">Salesforce · Talkdesk · Airtable</p>
-              <h3>Contact-center connections</h3>
-              <p>
+              <h3 data-i18n="int.4.t">Contact-center connections</h3>
+              <p data-i18n="int.4.p">
                 CTI, data dips, and operational integrations across Salesforce and Airtable, including
                 the Talkdesk–Azure speech-to-text architecture.
               </p>
@@ -483,8 +488,8 @@
       <section id="credentials" class="section">
         <div class="wrap">
           <header class="section-head reveal">
-            <p class="section-tag">05 — Credentials</p>
-            <h2>Certified on the platform</h2>
+            <p class="section-tag" data-i18n="cred.tag">05 — Credentials</p>
+            <h2 data-i18n="cred.title">Certified on the platform</h2>
           </header>
 
           <div class="creds">
@@ -494,7 +499,7 @@
                   <circle cx="12" cy="9" r="6" /><path d="M9.5 9l1.8 1.8L14.8 7.3" /><path d="M8.5 14l-1.5 7 5-2.5 5 2.5-1.5-7" />
                 </svg>
               </div>
-              <p class="cred-type">Accredited Professional</p>
+              <p class="cred-type" data-i18n="cred.ap">Accredited Professional</p>
               <h3>Agentforce Manufacturing</h3>
               <p class="cred-full">Salesforce Accredited Agentforce Manufacturing Professional</p>
             </article>
@@ -504,7 +509,7 @@
                   <circle cx="12" cy="9" r="6" /><path d="M9.5 9l1.8 1.8L14.8 7.3" /><path d="M8.5 14l-1.5 7 5-2.5 5 2.5-1.5-7" />
                 </svg>
               </div>
-              <p class="cred-type">Certification</p>
+              <p class="cred-type" data-i18n="cred.cert">Certification</p>
               <h3>Platform Administrator</h3>
               <p class="cred-full">Salesforce Certified Platform Administrator</p>
             </article>
@@ -514,7 +519,7 @@
                   <circle cx="12" cy="9" r="6" /><path d="M9.5 9l1.8 1.8L14.8 7.3" /><path d="M8.5 14l-1.5 7 5-2.5 5 2.5-1.5-7" />
                 </svg>
               </div>
-              <p class="cred-type">Certification</p>
+              <p class="cred-type" data-i18n="cred.cert">Certification</p>
               <h3>Platform Developer</h3>
               <p class="cred-full">Salesforce Certified Platform Developer</p>
             </article>
@@ -524,7 +529,7 @@
                   <circle cx="12" cy="9" r="6" /><path d="M9.5 9l1.8 1.8L14.8 7.3" /><path d="M8.5 14l-1.5 7 5-2.5 5 2.5-1.5-7" />
                 </svg>
               </div>
-              <p class="cred-type">Certification</p>
+              <p class="cred-type" data-i18n="cred.cert">Certification</p>
               <h3>Agentforce Sales Consultant</h3>
               <p class="cred-full">Salesforce Certified Agentforce Sales Consultant</p>
             </article>
@@ -534,7 +539,7 @@
                   <path d="M12 2.5l8.2 4.75v9.5L12 21.5l-8.2-4.75v-9.5z" /><path d="M12 7.5l1.4 2.9 3.1.4-2.3 2.2.6 3.1-2.8-1.5-2.8 1.5.6-3.1-2.3-2.2 3.1-.4z" />
                 </svg>
               </div>
-              <p class="cred-type">Superbadge</p>
+              <p class="cred-type" data-i18n="cred.super">Superbadge</p>
               <h3>Data Protection</h3>
               <p class="cred-full">Superbadge: Data Protection</p>
             </article>
@@ -544,7 +549,7 @@
                   <path d="M12 2.5l8.2 4.75v9.5L12 21.5l-8.2-4.75v-9.5z" /><path d="M12 7.5l1.4 2.9 3.1.4-2.3 2.2.6 3.1-2.8-1.5-2.8 1.5.6-3.1-2.3-2.2 3.1-.4z" />
                 </svg>
               </div>
-              <p class="cred-type">Superbadge</p>
+              <p class="cred-type" data-i18n="cred.super">Superbadge</p>
               <h3>Selling with Sales Cloud</h3>
               <p class="cred-full">Selling with Sales Cloud Specialist</p>
             </article>
@@ -552,19 +557,19 @@
 
           <div class="cred-footer reveal">
             <div class="edu">
-              <p class="mini-label">Education</p>
-              <p><strong>B.Tech, Engineering</strong> · KIIT, Bhubaneswar · 2017 — 2021</p>
+              <p class="mini-label" data-i18n="edu.label">Education</p>
+              <p><strong data-i18n="edu.degree">B.Tech, Engineering</strong> · KIIT, Bhubaneswar · 2017 — 2021</p>
             </div>
             <div class="edu">
-              <p class="mini-label">Languages</p>
-              <p><strong>English</strong> · German</p>
+              <p class="mini-label" data-i18n="lang.label">Languages</p>
+              <p data-i18n="lang.value"><strong>English</strong> · German</p>
             </div>
             <a
               class="btn btn-ghost"
               href="https://www.salesforce.com/trailblazer/atandon50"
               target="_blank"
               rel="noopener noreferrer"
-              >Verify on Trailblazer</a
+              ><span data-i18n="cred.verify">Verify on Trailblazer</span></a
             >
           </div>
         </div>
@@ -573,8 +578,8 @@
       <section class="section skills-section">
         <div class="wrap">
           <header class="section-head reveal">
-            <p class="section-tag">06 — Toolkit</p>
-            <h2>What I work with</h2>
+            <p class="section-tag" data-i18n="skill.tag">06 — Toolkit</p>
+            <h2 data-i18n="skill.title">What I work with</h2>
           </header>
           <div class="skills">
             <div class="skill-group reveal">
@@ -585,19 +590,19 @@
               </ul>
             </div>
             <div class="skill-group reveal">
-              <h3>Contact center</h3>
+              <h3 data-i18n="skill.cc">Contact center</h3>
               <ul class="chips">
-                <li>Talkdesk</li><li>Genesys</li><li>Amazon Connect</li><li>IVR design</li><li>Ring groups</li><li>Call routing</li>
+                <li>Talkdesk</li><li>Genesys</li><li>Amazon Connect</li><li data-i18n="skill.ivr">IVR design</li><li data-i18n="skill.rings">Ring groups</li><li data-i18n="skill.route">Call routing</li>
               </ul>
             </div>
             <div class="skill-group reveal">
-              <h3>Identity &amp; integration</h3>
+              <h3 data-i18n="skill.id">Identity &amp; integration</h3>
               <ul class="chips">
                 <li>Azure AD SSO</li><li>SAML</li><li>Make.com</li><li>REST API</li><li>SOAP API</li><li>Postman</li>
               </ul>
             </div>
             <div class="skill-group reveal">
-              <h3>Engineering</h3>
+              <h3 data-i18n="skill.eng">Engineering</h3>
               <ul class="chips">
                 <li>JavaScript</li><li>Java</li><li>SQL</li><li>HTML &amp; CSS</li><li>Git</li><li>Automation Anywhere 360</li>
               </ul>
@@ -610,21 +615,21 @@
         <div class="contact-glow" aria-hidden="true"></div>
         <div class="wrap contact-layout">
           <div class="contact-copy reveal">
-            <p class="section-tag">07 — Contact</p>
-            <h2>Let’s build something that holds.</h2>
-            <p class="lede">
+            <p class="section-tag" data-i18n="contact.tag">07 — Contact</p>
+            <h2 data-i18n="contact.title">Let’s build something that holds.</h2>
+            <p class="lede" data-i18n="contact.lede">
               Salesforce, Talkdesk, or a contact-center build that needs to sit cleanly on CRM. Send a
               message and I’ll reply by email.
             </p>
             <ul class="channels">
               <li>
-                <span class="ch-label">Email</span>
+                <span class="ch-label" data-i18n="contact.email">Email</span>
                 <a href="mailto:Ayushtandon717@gmail.com">Ayushtandon717@gmail.com</a>
               </li>
               <li>
-                <span class="ch-label">Phone</span>
+                <span class="ch-label" data-i18n="contact.phone">Phone</span>
                 <button class="text-btn" type="button" data-open-phone>
-                  Request my number
+                  <span data-i18n="contact.request">Request my number</span>
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                 </button>
               </li>
@@ -645,24 +650,24 @@
           </div>
 
           <form class="panel form reveal" id="contact-form" novalidate>
-            <h3>Send a message</h3>
+            <h3 data-i18n="form.title">Send a message</h3>
             <div class="field-row">
               <label class="field">
-                <span>Name</span>
+                <span data-i18n="form.name">Name</span>
                 <input name="name" type="text" autocomplete="name" required maxlength="120" />
               </label>
               <label class="field">
-                <span>Email</span>
+                <span data-i18n="form.email">Email</span>
                 <input name="email" type="email" autocomplete="email" required maxlength="200" />
               </label>
             </div>
             <label class="field">
-              <span>Message</span>
+              <span data-i18n="form.message">Message</span>
               <textarea name="message" rows="5" required maxlength="5000"></textarea>
             </label>
             <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
             <button class="btn btn-primary btn-block" type="submit">
-              <span class="btn-label">Send message</span>
+              <span class="btn-label" data-i18n="form.send">Send message</span>
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2.5-6.5z" /></svg>
             </button>
             <p class="form-status" role="status" aria-live="polite"></p>
@@ -673,8 +678,8 @@
 
     <footer class="footer">
       <div class="wrap footer-inner">
-        <p>© <span id="year">2026</span> Ayush Tandon · <button class="text-link" type="button" data-open-consent>Cookie settings</button></p>
-        <a href="#top" class="link-arrow">Back to top <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" /></svg></a>
+        <p>© <span id="year">2026</span> Ayush Tandon · <button class="text-link" type="button" data-open-consent data-i18n="footer.cookies">Cookie settings</button></p>
+        <a href="#top" class="link-arrow"><span data-i18n="footer.top">Back to top</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" /></svg></a>
       </div>
     </footer>
 
@@ -688,27 +693,27 @@
             <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" />
           </svg>
         </div>
-        <h3 id="phone-title">Request my phone number</h3>
-        <p class="dialog-text">Tell me who you are and I’ll email my number to you.</p>
+        <h3 id="phone-title" data-i18n="phone.title">Request my phone number</h3>
+        <p class="dialog-text" data-i18n="phone.text">Tell me who you are and I’ll email my number to you.</p>
         <label class="field">
-          <span>Name</span>
+          <span data-i18n="form.name">Name</span>
           <input name="name" type="text" autocomplete="name" required maxlength="120" />
         </label>
         <label class="field">
-          <span>Email</span>
+          <span data-i18n="form.email">Email</span>
           <input name="email" type="email" autocomplete="email" required maxlength="200" />
         </label>
         <label class="field">
-          <span>Company <em>(optional)</em></span>
+          <span data-i18n="phone.company">Company <em>(optional)</em></span>
           <input name="company" type="text" autocomplete="organization" maxlength="160" />
         </label>
         <label class="field">
-          <span>Reason <em>(optional)</em></span>
+          <span data-i18n="phone.reason">Reason <em>(optional)</em></span>
           <textarea name="reason" rows="3" maxlength="1000"></textarea>
         </label>
         <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <button class="btn btn-primary btn-block" type="submit">
-          <span class="btn-label">Send request</span>
+          <span class="btn-label" data-i18n="phone.send">Send request</span>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2.5-6.5z" /></svg>
         </button>
         <p class="form-status" role="status" aria-live="polite"></p>
@@ -717,11 +722,11 @@
 
     <div class="consent" id="consent" role="dialog" aria-labelledby="consent-title" hidden>
       <div class="consent-card">
-        <h2 id="consent-title">We use cookies</h2>
-        <p>This site uses cookies to understand visits and improve the page.</p>
+        <h2 id="consent-title" data-i18n="cookie.title">We use cookies</h2>
+        <p data-i18n="cookie.text">This site uses cookies to understand visits and improve the page.</p>
         <div class="consent-actions">
-          <button class="btn btn-ghost" type="button" data-consent="reject">Reject</button>
-          <button class="btn btn-primary" type="button" data-consent="accept">Accept</button>
+          <button class="btn btn-ghost" type="button" data-consent="reject" data-i18n="cookie.reject">Reject</button>
+          <button class="btn btn-primary" type="button" data-consent="accept" data-i18n="cookie.accept">Accept</button>
         </div>
       </div>
     </div>

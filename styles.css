@@ -156,6 +156,31 @@ h3 {
   display: flex;
   align-items: center;
   gap: 0.3rem;
+  margin-left: auto;
+}
+
+.lang-switch {
+  display: inline-flex;
+  margin-left: 0.7rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.lang-switch button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  padding: 0.4rem 0.7rem;
+  font: 600 0.75rem var(--font-mono);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.lang-switch button.on {
+  background: var(--grad);
+  color: #051021;
 }
 
 .nav-links a {
@@ -227,6 +252,11 @@ h3 {
 @media (max-width: 760px) {
   .nav-toggle {
     display: block;
+  }
+
+  .lang-switch {
+    margin-left: auto;
+    margin-right: 0.45rem;
   }
 
   .nav-links {
@@ -1783,6 +1813,102 @@ h3 {
   from {
     opacity: 0;
     transform: translateY(14px) scale(0.97);
+  }
+}
+
+@media (max-width: 760px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .hero-layout,
+  .hero-copy,
+  .console,
+  .deck-viewport,
+  .deck-card {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .hero-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .actions {
+    max-width: 100%;
+  }
+
+  .wrap,
+  .nav-inner {
+    width: min(1140px, calc(100% - 1.25rem));
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 92px 0 2.5rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.7rem, 14vw, 3.6rem);
+  }
+
+  .hero-role,
+  .lede {
+    font-size: 1rem;
+  }
+
+  .actions .btn {
+    min-height: 44px;
+  }
+
+  .stats {
+    margin-top: 2rem;
+  }
+
+  .section {
+    padding: 3.2rem 0;
+  }
+
+  .flow li {
+    padding: 0.62rem 0.7rem;
+    gap: 0.65rem;
+  }
+
+  .flow strong {
+    font-size: 0.95rem;
+  }
+
+  .channels li {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+
+  .channels a {
+    overflow-wrap: anywhere;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .consent {
+    left: 0.6rem;
+    right: 0.6rem;
+    bottom: 0.6rem;
+  }
+
+  .consent-actions {
+    flex-direction: column-reverse;
+  }
+
+  .consent-actions .btn {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .dialog {
+    width: calc(100% - 1rem);
   }
 }
 

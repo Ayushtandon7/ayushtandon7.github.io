@@ -14,6 +14,7 @@
   initNetwork();
   initForms();
   initConsent();
+  initLanguage();
 
   function initNav() {
     const nav = document.getElementById("nav");
@@ -118,16 +119,29 @@
   function initRotator() {
     const el = document.querySelector(".rotator");
     if (!el || reduceMotion) return;
-    const words = JSON.parse(el.dataset.words);
-    let i = 0;
     setInterval(() => {
+      const words = JSON.parse(el.dataset.words);
       el.classList.add("out");
       setTimeout(() => {
-        i = (i + 1) % words.length;
-        el.textContent = words[i];
+        const index = (Number(el.dataset.rotIndex || 0) + 1) % words.length;
+        el.dataset.rotIndex = String(index);
+        el.textContent = words[index];
         el.classList.remove("out");
       }, 350);
     }, 2800);
+  }
+
+  function initLanguage() {
+    document.querySelectorAll("[data-lang]").forEach((button) => {
+      button.addEventListener("click", () => window.applySiteLanguage(button.dataset.lang));
+    });
+    let saved = "en";
+    try {
+      saved = localStorage.getItem("ayush-lang") || "en";
+    } catch {
+      saved = "en";
+    }
+    window.applySiteLanguage(saved);
   }
 
   function initDeck() {
@@ -523,7 +537,7 @@
         message: data.message,
         _subject: `Portfolio message from ${data.name}`,
       }),
-      "Thanks, your message is on its way. I’ll reply by email."
+      "form.thanks"
     );
 
     wireForm(
@@ -536,7 +550,7 @@
         reason: data.reason || "—",
         _subject: `Phone number request from ${data.name}`,
       }),
-      "Request sent. I’ll email my number to you."
+      "form.phoneOk"
     );
   }
 
@@ -555,7 +569,8 @@
       const invalid = fields.filter((f) => !f.value.trim() || !f.checkValidity());
       fields.forEach((f) => f.closest(".field")?.classList.toggle("invalid", invalid.includes(f)));
       if (invalid.length) {
-        setStatus(status, "Please fill in your name, a valid email, and the required fields.", "err");
+        const pack = window.SITE_I18N[document.documentElement.lang] || window.SITE_I18N.en;
+        setStatus(status, pack["form.invalid"], "err");
         invalid[0].focus();
         return;
       }
@@ -565,7 +580,7 @@
 
       button.disabled = true;
       button.classList.add("loading");
-      setStatus(status, "Sending…", "");
+      setStatus(status, window.SITE_I18N[document.documentElement.lang]["form.sending"] || window.SITE_I18N.en["form.sending"], "");
 
       try {
         const res = await fetch(FORM_ENDPOINT, {
@@ -581,9 +596,11 @@
         const body = await res.json().catch(() => ({}));
         if (!res.ok || String(body.success) !== "true") throw new Error(body.message || "Send failed");
         form.reset();
-        setStatus(status, successText, "ok");
+        const pack = window.SITE_I18N[document.documentElement.lang] || window.SITE_I18N.en;
+        setStatus(status, pack[successText] || successText, "ok");
       } catch {
-        setStatus(status, `Couldn’t send right now. Please email ${FALLBACK_EMAIL} directly.`, "err");
+        const pack = window.SITE_I18N[document.documentElement.lang] || window.SITE_I18N.en;
+        setStatus(status, pack["form.fail"], "err");
       } finally {
         button.disabled = false;
         button.classList.remove("loading");
