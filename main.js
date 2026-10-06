@@ -13,6 +13,7 @@
   initSpotlight();
   initNetwork();
   initForms();
+  initConsent();
 
   function initNav() {
     const nav = document.getElementById("nav");
@@ -391,6 +392,99 @@
     new IntersectionObserver(([entry]) => (entry.isIntersecting ? start() : stop())).observe(hero);
     document.addEventListener("visibilitychange", () => (document.hidden ? stop() : start()));
     start();
+  }
+
+  function initConsent() {
+    const CONSENT_KEY = "ayush-consent";
+    const VISITOR_KEY = "ayush-visitor";
+    const SENT_KEY = "ayush-visit-sent";
+    const banner = document.getElementById("consent");
+    const show = () => banner.removeAttribute("hidden");
+    const hide = () => banner.setAttribute("hidden", "");
+
+    const choice = () => {
+      try {
+        return localStorage.getItem(CONSENT_KEY);
+      } catch {
+        return null;
+      }
+    };
+
+    const remember = (value) => {
+      try {
+        localStorage.setItem(CONSENT_KEY, value);
+      } catch {
+        /* private browsing can block storage */
+      }
+    };
+
+    const visitorId = () => {
+      try {
+        let id = localStorage.getItem(VISITOR_KEY);
+        if (!id) {
+          id = (crypto.randomUUID && crypto.randomUUID()) || String(Date.now());
+          localStorage.setItem(VISITOR_KEY, id);
+        }
+        return id.slice(0, 8);
+      } catch {
+        return "unknown";
+      }
+    };
+
+    const recordVisit = () => {
+      try {
+        if (sessionStorage.getItem(SENT_KEY)) return;
+        sessionStorage.setItem(SENT_KEY, "1");
+      } catch {
+        return;
+      }
+      const when = new Date();
+      fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: `Site visit ${when.toISOString()}`,
+          _template: "table",
+          _captcha: "false",
+          when: when.toLocaleString("en-GB", { timeZone: "Europe/Berlin", hour12: false }) + " Europe/Berlin",
+          page: location.href,
+          referrer: document.referrer || "direct",
+          language: navigator.language || "",
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "",
+          screen: `${window.screen.width}x${window.screen.height}`,
+          anonymous_id: visitorId(),
+        }),
+      }).catch(() => {
+        try {
+          sessionStorage.removeItem(SENT_KEY);
+        } catch {
+          /* ignore */
+        }
+      });
+    };
+
+    banner.addEventListener("click", (event) => {
+      const decision = event.target.closest("[data-consent]")?.dataset.consent;
+      if (!decision) return;
+      remember(decision);
+      hide();
+      if (decision === "accept") recordVisit();
+    });
+
+    document.querySelectorAll("[data-open-consent]").forEach((button) => {
+      button.addEventListener("click", () => {
+        try {
+          localStorage.removeItem(CONSENT_KEY);
+          sessionStorage.removeItem(SENT_KEY);
+        } catch {
+          /* ignore */
+        }
+        show();
+      });
+    });
+
+    if (choice() === "accept") recordVisit();
+    else if (choice() !== "reject") show();
   }
 
   function initForms() {

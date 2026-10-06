@@ -24,11 +24,11 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Sora:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=4" />
+    <link rel="stylesheet" href="styles.css?v=5" />
     <script>
       document.documentElement.classList.add("js");
     </script>
-    <script src="main.js?v=4" defer></script>
+    <script src="main.js?v=5" defer></script>
   </head>
   <body>
     <div class="progress" aria-hidden="true"></div>
@@ -673,7 +673,7 @@
 
     <footer class="footer">
       <div class="wrap footer-inner">
-        <p>© <span id="year">2026</span> Ayush Tandon</p>
+        <p>© <span id="year">2026</span> Ayush Tandon · <button class="text-link" type="button" data-open-consent>Cookie settings</button></p>
         <a href="#top" class="link-arrow">Back to top <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" /></svg></a>
       </div>
     </footer>
@@ -714,5 +714,19 @@
         <p class="form-status" role="status" aria-live="polite"></p>
       </form>
     </dialog>
+
+    <div class="consent" id="consent" role="dialog" aria-labelledby="consent-title" hidden>
+      <div class="consent-card">
+        <h2 id="consent-title">Cookies</h2>
+        <p>
+          Optional analytics records the time of a visit, the page, the referrer, language, and time
+          zone. It does not collect your name. Nothing is sent unless you accept.
+        </p>
+        <div class="consent-actions">
+          <button class="btn btn-ghost" type="button" data-consent="reject">Reject</button>
+          <button class="btn btn-primary" type="button" data-consent="accept">Accept</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

@@ -1668,6 +1668,59 @@ h3 {
   margin: 0;
 }
 
+.text-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.consent {
+  position: fixed;
+  z-index: 70;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.consent[hidden] {
+  display: none;
+}
+
+.consent-card {
+  width: min(560px, 100%);
+  padding: 1.2rem 1.25rem;
+  border-radius: 18px;
+  border: 1px solid var(--line-strong);
+  background: rgba(10, 14, 26, 0.94);
+  box-shadow: 0 24px 80px -30px rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(16px);
+}
+
+.consent-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.4rem;
+}
+
+.consent-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.consent-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
 /* Reveal */
 
 .js .reveal {
