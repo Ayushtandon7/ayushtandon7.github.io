@@ -24,11 +24,11 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Sora:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=3" />
+    <link rel="stylesheet" href="styles.css?v=4" />
     <script>
       document.documentElement.classList.add("js");
     </script>
-    <script src="main.js?v=3" defer></script>
+    <script src="main.js?v=4" defer></script>
   </head>
   <body>
     <div class="progress" aria-hidden="true"></div>
@@ -112,7 +112,7 @@
                 <article class="deck-card" data-title="Call journey">
                   <div class="console-head">
                     <span class="dots"><i></i><i></i><i></i></span>
-                    <span class="mono">talkdesk → salesforce</span>
+                    <span class="mono">CTI → salesforce</span>
                     <span class="live"><span class="pulse-dot"></span>live</span>
                   </div>
                   <ol class="flow">
@@ -150,7 +150,7 @@
                 <article class="deck-card" data-title="Azure middleware">
                   <div class="console-head">
                     <span class="dots"><i></i><i></i><i></i></span>
-                    <span class="mono">talkdesk → make → azure</span>
+                    <span class="mono">CTI → make → azure</span>
                     <span class="live"><span class="pulse-dot"></span>live</span>
                   </div>
                   <ol class="flow">
@@ -176,7 +176,7 @@
                     </li>
                     <li>
                       <span class="step-no">05</span>
-                      <div><strong>No recording</strong><span>Call metadata is still delivered</span></div>
+                      <div><strong>Transcribe audio</strong><span>Audio file converted to a transcript</span></div>
                       <span class="tick" aria-hidden="true"></span>
                     </li>
                   </ol>
@@ -350,24 +350,24 @@
               <p class="meta">Enpal · Make.com middleware</p>
               <h3>Talkdesk–Azure call middleware</h3>
               <p>
-                Designed and deployed the integration that sits between Talkdesk and Azure. A finished
+                Designed and deployed the integration that sits between the contact center and Azure. A finished
                 call arrives on a webhook. The scenario waits for the recording, reuses a cached OAuth
-                token or requests a new one, retrieves the recording, and posts one normalized payload
-                to Azure. If the recording is not available yet, the call metadata is still delivered.
+                token or requests a new one, retrieves the audio, transcribes it, and posts one normalized payload
+                to Azure.
               </p>
               <ul class="chips">
                 <li>Architecture</li>
                 <li>OAuth client credentials</li>
                 <li>Token cache</li>
                 <li>Recordings API</li>
-                <li>Two delivery paths</li>
+                <li>Audio transcription</li>
                 <li>Azure API handoff</li>
               </ul>
             </div>
             <ol class="arch" aria-label="Middleware architecture">
-              <li><strong>Talkdesk</strong><span>Call-ended webhook</span></li>
+              <li><strong>CTI</strong><span>Call-ended webhook</span></li>
               <li><strong>Make.com</strong><span>Auth, mapping, delivery</span></li>
-              <li><strong>Recordings</strong><span>Media link when ready</span></li>
+              <li><strong>Transcript</strong><span>Audio file converted to text</span></li>
               <li><strong>Azure</strong><span>Authenticated API delivery</span></li>
             </ol>
           </article>
@@ -449,7 +449,7 @@
               <h3>Call events into Azure</h3>
               <p>
                 Webhook in, authenticated API out. Call context, agent, queue, duration, and the
-                recording link travel as one payload. A separate path covers calls with no recording.
+                recording link travel as one payload, and the audio file is transcribed.
               </p>
             </article>
             <article class="card spot reveal">
