@@ -9,7 +9,7 @@
   initReveal();
   initCounters();
   initRotator();
-  initFlow();
+  initDeck();
   initSpotlight();
   initNetwork();
   initForms();
@@ -129,35 +129,111 @@
     }, 2800);
   }
 
-  function initFlow() {
-    const steps = [...document.querySelectorAll("#flow li")];
-    const bar = document.querySelector(".console-bar i");
-    if (!steps.length) return;
+  function initDeck() {
+    const deck = document.querySelector("[data-deck]");
+    if (!deck) return;
+    const track = deck.querySelector(".deck-track");
+    const viewport = deck.querySelector(".deck-viewport");
+    const cards = [...deck.querySelectorAll(".deck-card")];
+    const title = deck.querySelector("[data-deck-title]");
+    const foot = deck.querySelector("[data-deck-foot]");
+    const bar = deck.querySelector(".console-bar i");
+    const dots = deck.querySelector(".deck-dots");
+    let index = 0;
+    let timer = 0;
+    let startX = 0;
+    let delta = 0;
+    let dragging = false;
 
-    if (reduceMotion) {
-      steps.forEach((s) => s.classList.add("done"));
-      bar.style.transform = "scaleX(1)";
-      return;
-    }
+    cards.forEach((card, i) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.setAttribute("aria-label", card.dataset.title);
+      dot.addEventListener("click", () => go(i));
+      dots.appendChild(dot);
+    });
 
-    let i = 0;
-    const tick = () => {
-      steps.forEach((s) => s.classList.remove("current"));
-      if (i < steps.length) {
-        steps[i].classList.add("current", "done");
-        bar.style.transform = `scaleX(${(i + 1) / steps.length})`;
-        i += 1;
-        setTimeout(tick, 1300);
+    const play = (card) => {
+      clearTimeout(timer);
+      const steps = [...card.querySelectorAll(".flow li")];
+      cards.forEach((other) => {
+        if (other === card) return;
+        other.querySelectorAll(".flow li").forEach((step) => step.classList.remove("done", "current"));
+      });
+      steps.forEach((step) => step.classList.remove("done", "current"));
+      bar.style.transform = "scaleX(0)";
+      if (reduceMotion) {
+        steps.forEach((step) => step.classList.add("done"));
+        bar.style.transform = "scaleX(1)";
         return;
       }
-      setTimeout(() => {
-        steps.forEach((s) => s.classList.remove("done"));
-        bar.style.transform = "scaleX(0)";
-        i = 0;
-        setTimeout(tick, 700);
-      }, 2200);
+      let stepIndex = 0;
+      const tick = () => {
+        if (cards[index] !== card) return;
+        steps.forEach((step) => step.classList.remove("current"));
+        if (stepIndex < steps.length) {
+          steps[stepIndex].classList.add("current", "done");
+          bar.style.transform = `scaleX(${(stepIndex + 1) / steps.length})`;
+          stepIndex += 1;
+          timer = setTimeout(tick, 1300);
+          return;
+        }
+        timer = setTimeout(() => {
+          if (cards[index] !== card) return;
+          steps.forEach((step) => step.classList.remove("done", "current"));
+          bar.style.transform = "scaleX(0)";
+          stepIndex = 0;
+          timer = setTimeout(tick, 700);
+        }, 2200);
+      };
+      timer = setTimeout(tick, 350);
     };
-    setTimeout(tick, 900);
+
+    const go = (next) => {
+      index = (next + cards.length) % cards.length;
+      track.style.transition = "";
+      track.style.transform = `translateX(-${index * 100}%)`;
+      const card = cards[index];
+      title.textContent = card.dataset.title;
+      foot.textContent = card.dataset.foot;
+      [...dots.children].forEach((dot, i) => {
+        dot.classList.toggle("on", i === index);
+        dot.setAttribute("aria-selected", String(i === index));
+      });
+      play(card);
+    };
+
+    viewport.addEventListener("pointerdown", (event) => {
+      if (event.button !== 0) return;
+      dragging = true;
+      startX = event.clientX;
+      delta = 0;
+      track.style.transition = "none";
+      viewport.setPointerCapture(event.pointerId);
+    });
+    viewport.addEventListener("pointermove", (event) => {
+      if (!dragging) return;
+      delta = event.clientX - startX;
+      track.style.transform = `translateX(calc(-${index * 100}% + ${delta}px))`;
+    });
+    const release = () => {
+      if (!dragging) return;
+      dragging = false;
+      if (delta <= -48) go(index + 1);
+      else if (delta >= 48) go(index - 1);
+      else go(index);
+    };
+    viewport.addEventListener("pointerup", release);
+    viewport.addEventListener("pointercancel", release);
+
+    deck.querySelector("[data-deck-prev]").addEventListener("click", () => go(index - 1));
+    deck.querySelector("[data-deck-next]").addEventListener("click", () => go(index + 1));
+    deck.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight") go(index + 1);
+      if (event.key === "ArrowLeft") go(index - 1);
+    });
+
+    go(0);
   }
 
   function initSpotlight() {

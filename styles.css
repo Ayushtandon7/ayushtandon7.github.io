@@ -570,6 +570,67 @@ h3 {
   height: 6px;
 }
 
+.deck-viewport {
+  overflow: hidden;
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+}
+
+.deck-viewport:active {
+  cursor: grabbing;
+}
+
+.deck-track {
+  display: flex;
+  align-items: stretch;
+  transition: transform 0.45s var(--ease);
+}
+
+.deck-card {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.deck-arrow {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border-radius: 8px;
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--text);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.deck-arrow:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.deck-dots {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.deck-dots button {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.22);
+  cursor: pointer;
+}
+
+.deck-dots button.on {
+  width: 16px;
+  background: var(--cyan);
+}
+
 .flow {
   list-style: none;
   margin: 0;
