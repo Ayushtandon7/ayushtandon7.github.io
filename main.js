@@ -135,9 +135,6 @@
     const track = deck.querySelector(".deck-track");
     const viewport = deck.querySelector(".deck-viewport");
     const cards = [...deck.querySelectorAll(".deck-card")];
-    const title = deck.querySelector("[data-deck-title]");
-    const foot = deck.querySelector("[data-deck-foot]");
-    const bar = deck.querySelector(".console-bar i");
     const dots = deck.querySelector(".deck-dots");
     let index = 0;
     let timer = 0;
@@ -156,15 +153,15 @@
     const play = (card) => {
       clearTimeout(timer);
       const steps = [...card.querySelectorAll(".flow li")];
+      const bar = card.querySelector(".console-bar i");
       cards.forEach((other) => {
-        if (other === card) return;
         other.querySelectorAll(".flow li").forEach((step) => step.classList.remove("done", "current"));
+        const otherBar = other.querySelector(".console-bar i");
+        if (otherBar) otherBar.style.transform = "scaleX(0)";
       });
-      steps.forEach((step) => step.classList.remove("done", "current"));
-      bar.style.transform = "scaleX(0)";
       if (reduceMotion) {
         steps.forEach((step) => step.classList.add("done"));
-        bar.style.transform = "scaleX(1)";
+        if (bar) bar.style.transform = "scaleX(1)";
         return;
       }
       let stepIndex = 0;
@@ -173,7 +170,7 @@
         steps.forEach((step) => step.classList.remove("current"));
         if (stepIndex < steps.length) {
           steps[stepIndex].classList.add("current", "done");
-          bar.style.transform = `scaleX(${(stepIndex + 1) / steps.length})`;
+          if (bar) bar.style.transform = `scaleX(${(stepIndex + 1) / steps.length})`;
           stepIndex += 1;
           timer = setTimeout(tick, 1300);
           return;
@@ -181,7 +178,7 @@
         timer = setTimeout(() => {
           if (cards[index] !== card) return;
           steps.forEach((step) => step.classList.remove("done", "current"));
-          bar.style.transform = "scaleX(0)";
+          if (bar) bar.style.transform = "scaleX(0)";
           stepIndex = 0;
           timer = setTimeout(tick, 700);
         }, 2200);
@@ -193,14 +190,12 @@
       index = (next + cards.length) % cards.length;
       track.style.transition = "";
       track.style.transform = `translateX(-${index * 100}%)`;
-      const card = cards[index];
-      title.textContent = card.dataset.title;
-      foot.textContent = card.dataset.foot;
+      cards.forEach((card, i) => card.classList.toggle("is-active", i === index));
       [...dots.children].forEach((dot, i) => {
         dot.classList.toggle("on", i === index);
         dot.setAttribute("aria-selected", String(i === index));
       });
-      play(card);
+      play(cards[index]);
     };
 
     viewport.addEventListener("pointerdown", (event) => {

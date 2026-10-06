@@ -24,11 +24,11 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Sora:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=3" />
     <script>
       document.documentElement.classList.add("js");
     </script>
-    <script src="main.js" defer></script>
+    <script src="main.js?v=3" defer></script>
   </head>
   <body>
     <div class="progress" aria-hidden="true"></div>
@@ -107,43 +107,14 @@
           </div>
 
           <aside class="console reveal" data-deck tabindex="0" aria-roledescription="carousel" aria-label="Work cards">
-            <div class="console-head">
-              <span class="dots"><i></i><i></i><i></i></span>
-              <span class="mono" data-deck-title>talkdesk → make → azure</span>
-              <span class="live"><span class="pulse-dot"></span>live</span>
-            </div>
             <div class="deck-viewport">
               <div class="deck-track">
-                <article class="deck-card" data-title="talkdesk → make → azure" data-foot="middleware">
-                  <ol class="flow">
-                    <li>
-                      <span class="step-no">01</span>
-                      <div><strong>Call webhook</strong><span>Talkdesk sends the finished call</span></div>
-                      <span class="tick" aria-hidden="true"></span>
-                    </li>
-                    <li>
-                      <span class="step-no">02</span>
-                      <div><strong>OAuth token</strong><span>Reuse the cache, or refresh it</span></div>
-                      <span class="tick" aria-hidden="true"></span>
-                    </li>
-                    <li>
-                      <span class="step-no">03</span>
-                      <div><strong>Recording</strong><span>Fetch the file and follow the media link</span></div>
-                      <span class="tick" aria-hidden="true"></span>
-                    </li>
-                    <li>
-                      <span class="step-no">04</span>
-                      <div><strong>Azure API</strong><span>Normalized payload handed off</span></div>
-                      <span class="tick" aria-hidden="true"></span>
-                    </li>
-                    <li>
-                      <span class="step-no">05</span>
-                      <div><strong>Fallback</strong><span>Metadata still sent if no recording</span></div>
-                      <span class="tick" aria-hidden="true"></span>
-                    </li>
-                  </ol>
-                </article>
-                <article class="deck-card" data-title="talkdesk call journey" data-foot="call journey">
+                <article class="deck-card" data-title="Call journey">
+                  <div class="console-head">
+                    <span class="dots"><i></i><i></i><i></i></span>
+                    <span class="mono">talkdesk → salesforce</span>
+                    <span class="live"><span class="pulse-dot"></span>live</span>
+                  </div>
                   <ol class="flow">
                     <li>
                       <span class="step-no">01</span>
@@ -171,15 +142,55 @@
                       <span class="tick" aria-hidden="true"></span>
                     </li>
                   </ol>
+                  <div class="console-foot">
+                    <span class="mono">call journey</span>
+                    <span class="console-bar"><i></i></span>
+                  </div>
+                </article>
+                <article class="deck-card" data-title="Azure middleware">
+                  <div class="console-head">
+                    <span class="dots"><i></i><i></i><i></i></span>
+                    <span class="mono">talkdesk → make → azure</span>
+                    <span class="live"><span class="pulse-dot"></span>live</span>
+                  </div>
+                  <ol class="flow">
+                    <li>
+                      <span class="step-no">01</span>
+                      <div><strong>Call webhook</strong><span>Finished call arrives in Make</span></div>
+                      <span class="tick" aria-hidden="true"></span>
+                    </li>
+                    <li>
+                      <span class="step-no">02</span>
+                      <div><strong>OAuth token</strong><span>Reuse the cache, or refresh it</span></div>
+                      <span class="tick" aria-hidden="true"></span>
+                    </li>
+                    <li>
+                      <span class="step-no">03</span>
+                      <div><strong>Recording</strong><span>Fetch the file and follow the media link</span></div>
+                      <span class="tick" aria-hidden="true"></span>
+                    </li>
+                    <li>
+                      <span class="step-no">04</span>
+                      <div><strong>Azure API</strong><span>Normalized payload handed off</span></div>
+                      <span class="tick" aria-hidden="true"></span>
+                    </li>
+                    <li>
+                      <span class="step-no">05</span>
+                      <div><strong>No recording</strong><span>Call metadata is still delivered</span></div>
+                      <span class="tick" aria-hidden="true"></span>
+                    </li>
+                  </ol>
+                  <div class="console-foot">
+                    <span class="mono">middleware</span>
+                    <span class="console-bar"><i></i></span>
+                  </div>
                 </article>
               </div>
             </div>
-            <div class="console-foot">
+            <div class="deck-nav">
               <button class="deck-arrow" type="button" data-deck-prev aria-label="Previous card">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" /></svg>
               </button>
-              <span class="mono" data-deck-foot>middleware</span>
-              <span class="console-bar"><i></i></span>
               <div class="deck-dots" role="tablist" aria-label="Cards"></div>
               <button class="deck-arrow" type="button" data-deck-next aria-label="Next card">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>

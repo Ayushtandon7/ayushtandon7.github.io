@@ -577,6 +577,14 @@ h3 {
   user-select: none;
 }
 
+.deck-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding-top: 0.85rem;
+}
+
 .deck-viewport:active {
   cursor: grabbing;
 }
