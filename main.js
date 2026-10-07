@@ -2,6 +2,9 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const FORM_ENDPOINT = "https://formsubmit.co/ajax/Ayushtandon717@gmail.com";
   const FALLBACK_EMAIL = "Ayushtandon717@gmail.com";
+  const VISIT_TOPIC = "ayt-qgxbKB3hFkpxo-MlDhmDX3Uv";
+  const VISIT_KEY =
+    "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4FOOjlb6pka4cAFlwiLYEKf5hPHiRrs5tDP8F6Ozb+gv9I7J67QYjH8sn7VChS8hekxeDBsb3fBUEskRaTYr9GwC5jzjbSxquQIsyQ+cgKCB2/ForDSX/wLe386jCY1pj/GDwfIZlNeDPr2Jud8FN6pnLz7Ahbn1o288jWXdPCDNEQur5+gKu6L7pb5Z853BfjueId/mc5SjYn0S6nL8xkst1Ix8xN3EuP2ykws4uOzn+MVg2g2wFn07aCGit/83T9vX6Z8Vl+gfK7O0rdcxYNnSojLuvx0qGRJQvX4gsgirRGIMNsTAEeHNU2FtDwG6S4QREqC0lCxMdoatYJBt2wIDAQAB";
 
   document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -445,7 +448,26 @@
       }
     };
 
-    const recordVisit = () => {
+    const bytesToB64 = (buf) => {
+      const bytes = new Uint8Array(buf);
+      let bin = "";
+      for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+      return btoa(bin);
+    };
+
+    const sealVisit = async (payload) => {
+      const data = new TextEncoder().encode(JSON.stringify(payload));
+      const aes = await crypto.subtle.generateKey({ name: "AES-GCM", length: 256 }, true, ["encrypt"]);
+      const iv = crypto.getRandomValues(new Uint8Array(12));
+      const cipher = await crypto.subtle.encrypt({ name: "AES-GCM", iv }, aes, data);
+      const raw = await crypto.subtle.exportKey("raw", aes);
+      const der = Uint8Array.from(atob(VISIT_KEY), (char) => char.charCodeAt(0));
+      const pub = await crypto.subtle.importKey("spki", der, { name: "RSA-OAEP", hash: "SHA-256" }, false, ["encrypt"]);
+      const wrapped = await crypto.subtle.encrypt({ name: "RSA-OAEP" }, pub, raw);
+      return JSON.stringify({ w: bytesToB64(wrapped), i: bytesToB64(iv), c: bytesToB64(cipher) });
+    };
+
+    const recordVisit = async () => {
       try {
         if (sessionStorage.getItem(SENT_KEY)) return;
         sessionStorage.setItem(SENT_KEY, "1");
@@ -456,13 +478,9 @@
       const brands = navigator.userAgentData
         ? navigator.userAgentData.brands.map((brand) => `${brand.brand} ${brand.version}`).join(", ")
         : "";
-      fetch(FORM_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          _subject: `Site visit ${when.toISOString()}`,
-          _template: "table",
-          _captcha: "false",
+      try {
+        const sealed = await sealVisit({
+          iso: when.toISOString(),
           when: when.toLocaleString("en-GB", { timeZone: "Europe/Berlin", hour12: false }) + " Europe/Berlin",
           page: location.href,
           referrer: document.referrer || "direct",
@@ -481,14 +499,20 @@
           device_memory_gb: String(navigator.deviceMemory || ""),
           cookies_enabled: String(navigator.cookieEnabled),
           anonymous_id: visitorId(),
-        }),
-      }).catch(() => {
+        });
+        const res = await fetch(`https://ntfy.sh/${VISIT_TOPIC}`, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain" },
+          body: sealed,
+        });
+        if (!res.ok) throw new Error("visit");
+      } catch {
         try {
           sessionStorage.removeItem(SENT_KEY);
         } catch {
           /* ignore */
         }
-      });
+      }
     };
 
     banner.addEventListener("click", (event) => {

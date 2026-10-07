@@ -8,6 +8,10 @@ The GitHub account is [Ayushtandon7](https://github.com/Ayushtandon7). The Pages
 
 Anyone can open that link on any computer or phone. No login is required.
 
+## Visits
+
+Accepted visits are not emailed. They are listed on a private dashboard that only this GitHub account can open.
+
 ## Contact form and phone requests
 
 Both forms post to [FormSubmit](https://formsubmit.co) (`FORM_ENDPOINT` in `main.js`), which emails each submission to `Ayushtandon717@gmail.com`. The sender's address is set as reply-to, so replying in Gmail goes straight to them.
