@@ -1383,10 +1383,114 @@ h3 {
   font-weight: 600;
 }
 
-/* Skills */
+/* Tech stack pyramid */
 
 .skills-section {
-  padding-top: 0;
+  padding-top: 2rem;
+}
+
+.stack {
+  position: relative;
+  padding: 0.5rem 0 1rem;
+}
+
+.stack::before {
+  content: "";
+  position: absolute;
+  inset: -8% 10%;
+  background:
+    radial-gradient(circle at 22% 40%, rgba(77, 141, 255, 0.16), transparent 46%),
+    radial-gradient(circle at 78% 60%, rgba(51, 225, 199, 0.12), transparent 48%);
+  pointer-events: none;
+}
+
+.stack-pyramid {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.stack-row {
+  display: flex;
+  justify-content: center;
+  gap: 0.55rem;
+  max-width: 100%;
+}
+
+.stack-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  width: 86px;
+  height: 92px;
+  padding: 0.45rem 0.3rem 0.4rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s var(--ease), background 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.stack-tile:hover {
+  transform: translateY(-6px) scale(1.06);
+  background: rgba(77, 141, 255, 0.1);
+  border-color: rgba(51, 225, 199, 0.55);
+  box-shadow: 0 10px 28px rgba(77, 141, 255, 0.22);
+}
+
+.stack-tile img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  filter: grayscale(1) contrast(1.15) brightness(1.45);
+  opacity: 0.82;
+  transition: filter 0.3s, opacity 0.3s;
+}
+
+.stack-tile:hover img {
+  filter: none;
+  opacity: 1;
+}
+
+.stack-mark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: #9aa6c2;
+  background: rgba(255, 255, 255, 0.05);
+  filter: grayscale(1);
+  transition: filter 0.3s, color 0.3s, background 0.3s;
+}
+
+.stack-tile:hover .stack-mark {
+  filter: none;
+  color: #fff;
+  background: linear-gradient(160deg, rgba(77, 141, 255, 0.55), rgba(51, 225, 199, 0.35));
+}
+
+.stack-tile > span:last-child {
+  max-width: 100%;
+  font-size: 0.62rem;
+  line-height: 1.15;
+  text-align: center;
+  color: rgba(234, 238, 246, 0.68);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stack-tile:hover > span:last-child {
+  color: #fff;
 }
 
 .skills {
@@ -1909,6 +2013,34 @@ h3 {
 
   .dialog {
     width: calc(100% - 1rem);
+  }
+
+  .stack-pyramid,
+  .stack-row {
+    gap: 0.35rem;
+  }
+
+  .stack-tile {
+    width: 44px;
+    height: 54px;
+    gap: 0.15rem;
+    padding: 0.28rem 0.12rem;
+    border-radius: 8px;
+  }
+
+  .stack-tile img,
+  .stack-mark {
+    width: 18px;
+    height: 18px;
+  }
+
+  .stack-mark {
+    font-size: 0.52rem;
+    border-radius: 5px;
+  }
+
+  .stack-tile > span:last-child {
+    font-size: 0.42rem;
   }
 }
 

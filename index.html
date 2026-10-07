@@ -24,12 +24,12 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Sora:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=8" />
+    <link rel="stylesheet" href="styles.css?v=9" />
     <script>
       document.documentElement.classList.add("js");
     </script>
-    <script src="i18n.js?v=8" defer></script>
-    <script src="main.js?v=8" defer></script>
+    <script src="i18n.js?v=9" defer></script>
+    <script src="main.js?v=9" defer></script>
   </head>
   <body>
     <div class="progress" aria-hidden="true"></div>
@@ -583,33 +583,49 @@
         <div class="wrap">
           <header class="section-head reveal">
             <p class="section-tag" data-i18n="skill.tag">06 — Toolkit</p>
-            <h2 data-i18n="skill.title">What I work with</h2>
+            <h2 data-i18n="skill.title">Tech stack</h2>
           </header>
-          <div class="skills">
-            <div class="skill-group reveal">
-              <h3>Salesforce</h3>
-              <ul class="chips">
-                <li>Apex</li><li>Flows</li><li>Agentforce</li><li>Sales Cloud</li><li>Service Cloud</li>
-                <li>Experience Cloud</li><li>Data Cloud</li><li>Open CTI</li><li>Dataloader</li><li>Workbench</li><li>Gearset</li>
-              </ul>
-            </div>
-            <div class="skill-group reveal">
-              <h3 data-i18n="skill.cc">Contact center</h3>
-              <ul class="chips">
-                <li>Talkdesk</li><li>Genesys</li><li>Amazon Connect</li><li data-i18n="skill.ivr">IVR design</li><li data-i18n="skill.rings">Ring groups</li><li data-i18n="skill.route">Call routing</li>
-              </ul>
-            </div>
-            <div class="skill-group reveal">
-              <h3 data-i18n="skill.id">Identity &amp; integration</h3>
-              <ul class="chips">
-                <li>Azure AD SSO</li><li>SAML</li><li>Make.com</li><li>REST API</li><li>SOAP API</li><li>Postman</li>
-              </ul>
-            </div>
-            <div class="skill-group reveal">
-              <h3 data-i18n="skill.eng">Engineering</h3>
-              <ul class="chips">
-                <li>JavaScript</li><li>Java</li><li>SQL</li><li>HTML &amp; CSS</li><li>Git</li><li>Automation Anywhere 360</li>
-              </ul>
+          <div class="stack" aria-label="Tech stack">
+            <div class="stack-pyramid">
+              <div class="stack-row">
+                <div class="stack-tile" title="Salesforce"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg" alt="" width="32" height="32" /><span>Salesforce</span></div>
+                <div class="stack-tile" title="Apex"><span class="stack-mark">Ax</span><span>Apex</span></div>
+                <div class="stack-tile" title="Flows"><span class="stack-mark">Fl</span><span>Flows</span></div>
+                <div class="stack-tile" title="Agentforce"><span class="stack-mark">Af</span><span>Agentforce</span></div>
+                <div class="stack-tile" title="Sales Cloud"><span class="stack-mark">Sc</span><span>Sales Cloud</span></div>
+                <div class="stack-tile" title="Service Cloud"><span class="stack-mark">Sv</span><span>Service</span></div>
+                <div class="stack-tile" title="Experience Cloud"><span class="stack-mark">Ex</span><span>Experience</span></div>
+              </div>
+              <div class="stack-row">
+                <div class="stack-tile" title="Data Cloud"><span class="stack-mark">Dc</span><span>Data Cloud</span></div>
+                <div class="stack-tile" title="Talkdesk"><span class="stack-mark">Td</span><span>Talkdesk</span></div>
+                <div class="stack-tile" title="Genesys"><span class="stack-mark">Gn</span><span>Genesys</span></div>
+                <div class="stack-tile" title="Amazon Connect"><span class="stack-mark">Ac</span><span>Connect</span></div>
+                <div class="stack-tile" title="Make.com"><span class="stack-mark">Mk</span><span>Make.com</span></div>
+                <div class="stack-tile" title="Azure AD SSO"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="" width="32" height="32" /><span>Azure AD</span></div>
+              </div>
+              <div class="stack-row">
+                <div class="stack-tile" title="Open CTI"><span class="stack-mark">Ct</span><span>Open CTI</span></div>
+                <div class="stack-tile" title="SAML"><span class="stack-mark">Sm</span><span>SAML</span></div>
+                <div class="stack-tile" title="REST API"><span class="stack-mark">Re</span><span>REST</span></div>
+                <div class="stack-tile" title="SOAP API"><span class="stack-mark">So</span><span>SOAP</span></div>
+                <div class="stack-tile" title="Postman"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" alt="" width="32" height="32" /><span>Postman</span></div>
+              </div>
+              <div class="stack-row">
+                <div class="stack-tile" title="JavaScript"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="" width="32" height="32" /><span>JavaScript</span></div>
+                <div class="stack-tile" title="Java"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="" width="32" height="32" /><span>Java</span></div>
+                <div class="stack-tile" title="SQL"><span class="stack-mark">Ql</span><span>SQL</span></div>
+                <div class="stack-tile" title="Git"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="" width="32" height="32" /><span>Git</span></div>
+              </div>
+              <div class="stack-row">
+                <div class="stack-tile" title="HTML"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="" width="32" height="32" /><span>HTML</span></div>
+                <div class="stack-tile" title="CSS"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="" width="32" height="32" /><span>CSS</span></div>
+                <div class="stack-tile" title="Gearset"><span class="stack-mark">Gs</span><span>Gearset</span></div>
+              </div>
+              <div class="stack-row">
+                <div class="stack-tile" title="Workbench"><span class="stack-mark">Wb</span><span>Workbench</span></div>
+                <div class="stack-tile" title="Automation Anywhere 360"><span class="stack-mark">Aa</span><span>AA 360</span></div>
+              </div>
             </div>
           </div>
         </div>
