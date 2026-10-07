@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="referrer" content="no-referrer" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://api.github.com; base-uri 'none'; form-action 'none'"
+    />
+    <title>Dashboard</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Sora:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="desk.css?v=1" />
+    <script src="desk.js?v=1" defer></script>
+  </head>
+  <body>
+    <section class="lock" id="lock">
+      <div class="lock-card">
+        <span class="logo">AT</span>
+        <h1>Private dashboard</h1>
+        <p>Paste your GitHub access token to open it. The token stays in this browser only.</p>
+        <form id="unlock-form" autocomplete="off">
+          <input id="token" type="password" placeholder="github_pat_…" spellcheck="false" required />
+          <label class="remember"><input id="remember" type="checkbox" checked /> Remember on this device</label>
+          <button class="btn primary" type="submit">Unlock</button>
+          <p class="msg" id="lock-msg" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+    <main class="desk" id="desk" hidden>
+      <header class="top">
+        <div class="brand"><span class="logo">AT</span><strong>Dashboard</strong></div>
+        <div class="actions">
+          <span class="synced" id="synced"></span>
+          <button class="btn primary" id="refresh" type="button">Refresh</button>
+          <button class="btn ghost" id="lock-btn" type="button">Lock</button>
+        </div>
+      </header>
+      <p class="msg banner" id="desk-msg" role="status"></p>
+
+      <section class="stats">
+        <div class="stat"><span class="num" id="s-total">0</span><span class="lbl">Total visits</span></div>
+        <div class="stat"><span class="num" id="s-unique">0</span><span class="lbl">Unique visitors</span></div>
+        <div class="stat"><span class="num" id="s-today">0</span><span class="lbl">Today</span></div>
+        <div class="stat"><span class="num" id="s-week">0</span><span class="lbl">Last 7 days</span></div>
+        <div class="stat wide"><span class="num small" id="s-last">—</span><span class="lbl">Last visit</span></div>
+      </section>
+
+      <section class="panel">
+        <h2>Visits, last 14 days</h2>
+        <div class="chart" id="chart"></div>
+      </section>
+
+      <section class="grid3">
+        <div class="panel"><h2>Referrers</h2><ol class="tops" id="top-ref"></ol></div>
+        <div class="panel"><h2>Devices</h2><ol class="tops" id="top-dev"></ol></div>
+        <div class="panel"><h2>Timezones</h2><ol class="tops" id="top-tz"></ol></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Visitors</h2>
+          <input id="search" type="search" placeholder="Search id, page, browser…" />
+        </div>
+        <div class="visits" id="visits"></div>
+        <button class="btn ghost more" id="more" type="button" hidden>Show more</button>
+      </section>
+
+      <section class="panel">
+        <h2>Latest site changes</h2>
+        <ol class="changes" id="changes"></ol>
+      </section>
+    </main>
+  </body>
+</html>
