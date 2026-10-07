@@ -11,6 +11,7 @@ window.SITE_I18N = {
     "hero.lede":
       "Six years designing the systems between CRM and the contact center: Flows and Apex on Salesforce, routing and IVR on Talkdesk, and the identity and automation layers that keep them in sync.",
     "hero.cta": "Send a message",
+    "hero.cv": "Download CV",
     "flow.in": "Inbound call",
     "flow.in.d": "Number matched to its flow",
     "flow.ivr": "IVR menu",
@@ -171,6 +172,7 @@ window.SITE_I18N = {
     "hero.lede":
       "Seit sechs Jahren verbinde ich CRM und Contact Center: Flows und Apex in Salesforce, Routing und IVR in Talkdesk, dazu Identität und Automatisierung, die beides zusammenhält.",
     "hero.cta": "Nachricht senden",
+    "hero.cv": "Lebenslauf herunterladen",
     "flow.in": "Eingehender Anruf",
     "flow.in.d": "Nummer dem passenden Flow zugeordnet",
     "flow.ivr": "IVR-Menü",
